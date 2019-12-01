@@ -1,16 +1,23 @@
 var express = require('express');
 var router = express.Router();
 const ctrlMain = require('../controllers/main');
+const ctrlArticle = require('../controllers/articles');
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Hot Plots!' });
-// });
 
-// const homepageController = (req, res) => {
-//   res.render('index', {title: 'Hot Plots!'});  
-// };
-
+// Application Routing
+//
 router.get('/', ctrlMain.index);
+
+// a sample article
+//
+router.get('/article/:id', ctrlArticle.view);
+router.get('/articles/:order', ctrlArticle.list);
+
+//  registration form
+//
+//router.get('/users/register', ctrlUsers.registration);
+
+
+//router.get('/article/list/:order', ctrlArticle.list)
 
 module.exports = router;
