@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-xs-12.col-sm-6
+        img.img-responsive(src=`/img/${img}`, width='100%')
+      .col-xs-12.col-sm-6
+        .row
+          .col-sm-6
+            h1= title
+          
+            h3.pull-right
+            p #{author}
+            p 
+              span= moment(date).format('DD/MM/YYYY')
+        p #{body}
+      .col-xs-12
+        hr
