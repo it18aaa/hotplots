@@ -3,17 +3,16 @@ extends layout
 block content
   .container
     .row
-      .col-xs-12.col-sm-6
-        img.img-responsive(src=`/img/${img}`, width='100%')
-      .col-xs-12.col-sm-6
-        .row
-          .col-sm-6
-            h1= title
-          
-            h3.pull-right
-            p #{author}
-            p 
+      .col-xs-12.col-sm-12
+        h1= title
+          h6
+            p #{author} -              
               span= moment(date).format('DD/MM/YYYY')
-        p #{body}
-      .col-xs-12
+              
+      .col-xs-12.col-sm-1
+      .col-xs-12.col-sm-9
+        img.float-left.img-fluid.mr-4.mb-3(src=`/img/${img}` width="50%" )   
+        p.text-justify.text-wrap !{body}
+        
+      .col-xs-12.col-sm-1      
         hr

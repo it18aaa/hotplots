@@ -51,35 +51,11 @@ var data = [
         author: "Horace Cope",
         date: new Date('August 23, 2019 23:00:00'),
         img: '4.jpg',
-        body: `In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.  In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.  In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.  In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.  In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.  In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.  In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.`
+        body: `Once upon a time, our garden was a terrible mess of mud and sporadic leftover lawnage.  Then Rick Astley suggested to me that we should use some gravel and plant pots.
+        
+        Plants pots?  We had a big stack of them in our garden shed.  What a lovely thought from Rick. And thus the Lovely Pots were born.  We set to work planting lots of new plants into our pots.
+        
+        Great stuff!`
     },
     {
         id: 5,
@@ -87,11 +63,12 @@ var data = [
         author: "Clive Dunn",
         date: new Date('August 30, 2018 23:00:00'),
         img: '5.jpg',
-        body: `In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.`
+        body: `A solid foundation is key to the success of any endeavor, and gardening is no exception. Like humans, plants need good nutrition to grow, thrive, and be better able to fend off the effects of harmful pests and diseases. Good soil, which provides the foundation for a healthy garden, seldom occurs naturally, but has to be created. One of the best ways to enhance the fertility and consistency of the existing soil is to make your own compost.
+
+        Nearly all native soils are deficient in nutrients and tilth (physical condition), with most being too clay, rocky, lean, or sandy, resulting in a less-than-ideal environment for plants to grow. Enhancing the soil with compost and other nutrient-rich substances such as livestock manure or worm castings will improve soil structure, texture, aeration, and its ability to retain water. It also helps with erosion control, pH balance, and healthy root development.
+        
+        WHAT IS COMPOST?
+        In its raw form, compost consists of carbon-based brown matter such as dead leaves and small twigs, and nitrogen-based green matter such as grass clippings, fresh plant trimmings, and plant-based kitchen waste. Composting is the process of transforming this raw material through decomposition with the assistance of beneficial insects, earthworms, and microorganisms (bacteria and fungi) into a nutrient-dense, soil-like matter that’s added to existing soil.`
     },
     {
         id: 6,
