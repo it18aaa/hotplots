@@ -1,6 +1,18 @@
-// articles model
-// static for now
+var mongoose = require('mongoose');
 
+// articles model
+var articleSchema = new mongoose.Schema({
+    title: String,
+    author: String,
+    img: String,
+    date: Date,
+    body: String
+});
+
+var Article = mongoose.model('article', articleSchema);
+
+
+// static for now
 var data = [
     {
         id: 0,
