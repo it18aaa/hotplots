@@ -9,7 +9,13 @@ var sendJsonResponse = (res, status, content) => {
 }
 
 module.exports.fetchById = (req, res) => {
-    sendJsonResponse(res, 200, {"status" : "success"});
+    
+    Article
+        .findById(req.params.id)
+        .exec((err, article) => {
+            sendJsonResponse(res, 200, article);
+        });
+    //sendJsonResponse(res, 200, {"status" : "success"});
 }
 module.exports.articleList = (req, res) => {
     sendJsonResponse(res, 200, {"status" : "success"});
