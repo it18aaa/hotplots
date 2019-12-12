@@ -8,13 +8,11 @@ var sendJsonResponse = (res, status, content) => {
     res.json(content);
 }
 
-module.exports.fetchById = (req, res) => {
-    
+module.exports.fetchById = (req, res) => {    
     Article.findById(req.params.id)
         .exec((err, article) => {
             sendJsonResponse(res, 200, article);
-        });
-    
+        });    
    //sendJsonResponse(res, 200, {"status" : "success"});
 }
 
@@ -23,9 +21,7 @@ module.exports.articleList = (req, res) => {
     sendJsonResponse(res, 200, {"status" : "success"});
 }
 
-module.exports.articleCreate = (req, res) => {
-   
-    
+module.exports.articleCreate = (req, res) => {    
     Article.create({
         title: req.body.title,
         author: req.body.author,
@@ -40,9 +36,5 @@ module.exports.articleCreate = (req, res) => {
                 .status(201)
                 .json({"status" : "success"});
         }
-    });
-    
-    //sendJsonResponse(res, 200, {"status" :"success"});
-
-    
+    });    
 } 

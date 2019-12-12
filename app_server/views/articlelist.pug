@@ -1,17 +1,18 @@
 extends layout
 
 block content
-  h1.display-3 Articles
+  h2.display-3 Articles
   p from our community members  
     .card-columns
       each art in articles  
         
         .card
-          img.card-img-top(src=`/img/${art.img}`)
+          if art.img
+            img.card-img-top(src=`/img/${art.img}`)
           .card-body
             p.text-small 
               span= moment(art.date).format('DD MMMM YYYY')  
-            h5.card-title #{art.title}                                           
+            h5.card-title.font-weight-bold #{art.title}                            
             .card-text #{art.body.slice(0,100)}...                   
             a.card-link(href=`/article/${art.id}`) Read Article
       

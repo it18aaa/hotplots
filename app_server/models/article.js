@@ -1,15 +1,15 @@
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
-// articles model
-var articleSchema = new mongoose.Schema({
-    title: String,
-    author: String,
-    img: String,
-    date: Date,
-    body: String
-});
+// // articles model
+// var articleSchema = new mongoose.Schema({
+//     title: String,
+//     author: String,
+//     img: String,
+//     date: Date,
+//     body: String
+// });
 
-var Article = mongoose.model('article', articleSchema);
+// var Article = mongoose.model('article', articleSchema);
 
 
 // static for now
@@ -38,24 +38,24 @@ var data = [
         title:"My Patio Hacks",
         author: "Rick Astley",
         date: new Date('July 1, 2018 19:30:00'),
-        img: '2.jpg',
-        body:`So looking at the collections we’ve decided upon, we’ll split the controllers up into
-        Locations and Others. To see how this might work from a file architecture point of
-        view, we can sketch out something like figure 4.3. Here the application includes the
-        routes file, which in turn includes multiple controller files, each named according to
-        the relevant collection`
+        img: '3.jpg',
+        body:`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi proin sed libero enim sed faucibus turpis. Maecenas pharetra convallis posuere morbi leo urna molestie at. Et tortor consequat id porta nibh venenatis. Lobortis elementum nibh tellus molestie nunc non blandit. Curabitur vitae nunc sed velit dignissim. Et egestas quis ipsum suspendisse. Sit amet risus nullam eget felis. Gravida quis blandit turpis cursus in hac habitasse. Purus sit amet volutpat consequat mauris nunc congue nisi. Nullam vehicula ipsum a arcu cursus. Ullamcorper morbi tincidunt ornare massa eget egestas. Nec dui nunc mattis enim. Ut tortor pretium viverra suspendisse potenti nullam ac tortor vitae.
+
+        Magna sit amet purus gravida quis blandit turpis cursus. Blandit libero volutpat sed cras ornare arcu dui vivamus. Nulla facilisi etiam dignissim diam. At urna condimentum mattis pellentesque id nibh tortor id aliquet. Mi proin sed libero enim sed faucibus turpis. Condimentum id venenatis a condimentum vitae sapien pellentesque habitant. Cras pulvinar mattis nunc sed blandit. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. In massa tempor nec feugiat nisl. Sit amet massa vitae tortor. Enim ut sem viverra aliquet. Risus in hendrerit gravida rutrum. Pulvinar pellentesque habitant morbi tristique senectus et netus et malesuada. Elementum curabitur vitae nunc sed velit dignissim sodales ut eu. Convallis a cras semper auctor neque. Sit amet consectetur adipiscing elit ut.
+        
+        Duis convallis convallis tellus id interdum. Maecenas accumsan lacus vel facilisis. Ullamcorper sit amet risus nullam eget felis eget. Sed id semper risus in hendrerit. Gravida dictum fusce ut placerat orci nulla. Morbi tempus iaculis urna id volutpat lacus laoreet non. Pulvinar proin gravida hendrerit lectus. Ut consequat semper viverra nam. Id aliquet lectus proin nibh. Eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Aliquet sagittis id consectetur purus ut faucibus. Eget nulla facilisi etiam dignissim diam. Semper quis lectus nulla at volutpat diam ut. Eget aliquet nibh praesent tristique magna sit amet purus gravida. Convallis aenean et tortor at risus viverra adipiscing at in. Odio morbi quis commodo odio aenean. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+        
+        Orci eu lobortis elementum nibh tellus. Netus et malesuada fames ac turpis. Risus sed vulputate odio ut enim blandit volutpat maecenas. Praesent semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Varius morbi enim nunc faucibus a pellentesque. Dolor sed viverra ipsum nunc aliquet bibendum. Lorem dolor sed viverra ipsum nunc aliquet bibendum enim. Non blandit massa enim nec dui nunc mattis enim. Aliquam ultrices sagittis orci a scelerisque. Purus in massa tempor nec feugiat nisl.
+        
+        Fermentum iaculis eu non diam phasellus vestibulum lorem sed. At imperdiet dui accumsan sit. Integer feugiat scelerisque varius morbi. Ante metus dictum at tempor commodo ullamcorper a lacus vestibulum. Nec nam aliquam sem et tortor consequat id porta. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Elementum nisi quis eleifend quam adipiscing. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Luctus venenatis lectus magna fringilla urna porttitor. Odio euismod lacinia at quis risus sed vulputate. Adipiscing elit duis tristique sollicitudin nibh sit. Egestas sed sed risus pretium. Elementum nibh tellus molestie nunc non blandit massa enim. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Metus vulputate eu scelerisque felis. Varius morbi enim nunc faucibus a. Mi eget mauris pharetra et ultrices neque. Mi quis hendrerit dolor magna eget est. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis. Volutpat sed cras ornare arcu dui vivamus arcu felis bibendum.`
     },
     {
         id: 3,
         title:"Football gardens for kids",
         author: "Albert Stubbins",
         date: new Date('August 23, 2019 23:00:00'),
-        img: '1.jpg',
-        body: `In index.js you’ll need to have the routes for the three screens in the Locations collec-
-        tion, and also the About page in the Others collection. Each of these routes will also
-        need a reference to the controllers. Remember that routes simply serve as a mapping
-        service, taking the URL of an incoming request and mapping it to a specific piece of
-        application functionality.`
+        img: '',
+        body: `In index.js you’ll need to have the routes for the three screens in the Locations collection, and also the About page in the Others collection. Each of these routes will also need a reference to the controllers. Remember that routes simply serve as a mapping service, taking the URL of an incoming request and mapping it to a specific piece of application functionality.`
     },
     {
         id: 4,
@@ -99,7 +99,7 @@ var data = [
         title:"Tidy borders",
         author: "Basil Rush",
         date: new Date('August 30, 2018 23:00:00'),
-        img: '7.jpg',
+        img: '',
         body: `In index.js you’ll need to have the routes for the three screens in the Locations collec-
         tion, and also the About page in the Others collection. Each of these routes will also
         need a reference to the controllers. Remember that routes simply serve as a mapping
@@ -122,7 +122,7 @@ var data = [
         id: 8,
         title:"My Groovey Gravel Garden",
         author: "Graham Mayhem",
-        img: 'screentrees.jpg',
+        img: '',
         date: new Date('December 1, 2018 13:00:00'),
         body: `In index.js you’ll need to have the routes for the three screens in the Locations collec-
         tion, and also the About page in the Others collection. Each of these routes will also

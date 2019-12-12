@@ -9,10 +9,11 @@ block content
             p #{author} -              
               span= moment(date).format('DD/MM/YYYY')
               
-      .col-xs-12.col-sm-1
-      .col-xs-12.col-sm-9
-        img.float-left.img-fluid.mr-4.mb-3(src=`/img/${img}` width="50%" )   
-        p.text-justify.text-wrap !{body}
+      
+      .col-xs-12
+        if img
+          img.float-left.mr-4.mb-4(src=`/img/${img}` width="50%" )   
+        p.articlebody.text-wrap.text-justify !{body}
         
-      .col-xs-12.col-sm-1      
+           
         hr
