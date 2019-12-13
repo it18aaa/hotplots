@@ -1,21 +1,27 @@
+// Express Application Routing
+//
 var express = require('express');
 var router = express.Router();
 const ctrlMain = require('../controllers/main');
 const ctrlArticle = require('../controllers/articles');
 const ctrlQuestions = require('../controllers/questions');
 
-
-// Application Routing
+// Frontpage
 //
 router.get('/', ctrlMain.index);
 
-// a sample article
+// article related routes
 //
-router.get('/articles', ctrlArticle.list);
-router.get('/article/:id', ctrlArticle.view);
+router.get('/articles/create', ctrlArticle.create);
+router.get('/articles/list', ctrlArticle.list);
+router.get('/articles/:id', ctrlArticle.read);
 
-router.get('/questions/ask', ctrlQuestions.create);
+// question related routes
+//
+router.get('/questions/create', ctrlQuestions.create);
 router.get('/questions/list', ctrlQuestions.list);
+router.get('/questions/:id', ctrlQuestions.read);
 
-
+// export the routing table
+//
 module.exports = router;

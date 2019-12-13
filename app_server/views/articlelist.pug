@@ -3,6 +3,14 @@ extends layout
 block content
   h2.display-3 Articles
   p from our community members  
+  .row
+    .col-1
+    .col-10.border-top.border-bottom.pd-4
+      p popular tags: 
+        each tag in ['patios','gravel','lawn','garden design','borders','planting','maintenance']
+          a(href='#') #{tag} 
+
+    .col-1
     .card-columns
       each art in articles  
         
@@ -13,8 +21,12 @@ block content
             p.text-small 
               span= moment(art.date).format('DD MMMM YYYY')  
             h5.card-title.font-weight-bold #{art.title}                            
-            .card-text #{art.body.slice(0,100)}...                   
-            a.card-link(href=`/article/${art.id}`) Read Article
+            p.card-text #{art.body.slice(0,100)}...
+            .row
+              .col-6
+                p #{art.likes} likes
+              .col-6.text-right                   
+                a.btn.btn-sm.btn-info(href=`/articles/${art.id}`) Read
       
   
   

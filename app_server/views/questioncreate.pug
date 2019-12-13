@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h2.display-3 Ask a question
+    p let our community answer your questions and help you out...
+    .row.border
+        .col-md-2
+        .col-md-6
+            .form-group
+                label(for='title') Question Title
+                input#title.form-control(type='text')
+            .form-group
+                label(for='body') Question
+                textarea#body.form-control(rows=7)
+                help Your question and any relevant information
+            .form-group
+                label(for='tags') Tags
+                input#tags.form-control(type='text')
+                help A comma separated list of tags
+            .form-group.text-right
+                button.btn.btn-success Submit
+                button.btn.btn-fail Cancel
+        .col-md-2
+        .col-md-2

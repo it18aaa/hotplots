@@ -10,20 +10,20 @@ html
     script(src='/js/bootstrap.min.js')    
   body
     nav.navbar.navbar-expand-sm.navbar-dark.info-color.bg-primary.sticky-top
-      a.navbar-brand(href='#') HotPlots
+      a.navbar-brand(href='/') HotPlots
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto          
           li.nav-item
-            a.nav-link.waves-effect.waves-light(href='/articles') Articles
+            a.nav-link.waves-effect.waves-light(href='/articles/list') Articles
           li.nav-item
-            a.nav-link.waves-effect.waves-light(href='#') Q&A
+            a.nav-link.waves-effect.waves-light(href='/questions/list') Q&A
           li.nav-item.dropdown
             a#navbarDropdownMenuLink.nav-link.dropdown-toggle.waves-effect.waves-light(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') User
             .dropdown-menu.dropdown-info(aria-labelledby='navbarDropdownMenuLink')
-              a.dropdown-item.waves-effect.waves-light(href='#') Create an article
-              a.dropdown-item.waves-effect.waves-light(href='#') Ask a question
+              a.dropdown-item.waves-effect.waves-light(href='/articles/create') Create an article
+              a.dropdown-item.waves-effect.waves-light(href='/questions/create') Ask a question
               .dropdown-divider
               a.dropdown-item.waves-effect.waves-light(href='#') Messages
               a.dropdown-item.waves-effect.waves-light(href='#') Policies
@@ -33,8 +33,8 @@ html
     .container-fluid
       .row
         .col-md-1
-          p Garden Community
+          
         .col-md-10
           block content
         .col-md-1
-          p Garden swaps
+          
