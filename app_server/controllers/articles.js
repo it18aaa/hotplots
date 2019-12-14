@@ -42,3 +42,8 @@ module.exports.list = (req,res) => {
     order = req.params.order;
     res.render('articlelist', {articles: articles.data});    
 }
+
+module.exports.create = (req, res) => {
+    // stub for article creation controller
+    res.render('articlecreate' ); 
+}

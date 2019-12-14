@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h2.display-3 Create an article
+    p Write a new article
+    .row.border
+        .col-md-2
+        .col-md-6
+            form(action='/api/article/create', method='POST')
+                .form-group
+                    label(for='title') Article Title
+                    input#title.form-control(type='text')
+                .form-group
+                    label(for='body') Article Body
+                    textarea#body.form-control(rows=7)
+                    help Your question and any relevant information
+                .form-group
+                    label(for='tags') Tags
+                    input#tags.form-control(type='text')
+                    help A comma separated list of tags
+                .form-group.text-right
+                    input.btn.btn-success(type='submit')
+                    input.btn.btn-fail(type='cancel')
+        .col-md-2
+        .col-md-2
