@@ -13,6 +13,7 @@ router.get('/', ctrlMain.index);
 // article related routes
 //
 router.get('/articles/create', ctrlArticle.create);
+router.post('/articles/create', ctrlArticle.doCreate);
 router.get('/articles/list', ctrlArticle.list);
 router.get('/articles/:id', ctrlArticle.read);
 

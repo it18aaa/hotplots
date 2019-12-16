@@ -6,17 +6,17 @@ block content
     .row.border
         .col-md-2
         .col-md-6
-            form(action='/api/article/create', method='POST')
+            form(action='', method='POST')
                 .form-group
                     label(for='title') Article Title
-                    input#title.form-control(type='text')
+                    input#title.form-control(type='text',name='title')
                 .form-group
                     label(for='body') Article Body
-                    textarea#body.form-control(rows=7)
+                    textarea#body.form-control(rows=7,name='body')
                     help Your question and any relevant information
                 .form-group
                     label(for='tags') Tags
-                    input#tags.form-control(type='text')
+                    input#tags.form-control(type='text',name='tags')
                     help A comma separated list of tags
                 .form-group.text-right
                     input.btn.btn-success(type='submit')

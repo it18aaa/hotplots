@@ -21,11 +21,13 @@ module.exports.articleList = (req, res) => {
     sendJsonResponse(res, 200, {"status" : "success"});
 }
 
-module.exports.articleCreate = (req, res) => {    
+module.exports.articleCreate = (req, res) => {
+    console.log(`create new article: title: ${req.body.title} author ${req.body.author}`);    
     Article.create({
         title: req.body.title,
         author: req.body.author,
-        body: req.body.body
+        body: req.body.body,
+        date: new Date()
     }, (err, article) => {    // callback
         if(err) {
             res
@@ -34,7 +36,10 @@ module.exports.articleCreate = (req, res) => {
         } else {
             res
                 .status(201)
-                .json({"status" : "success"});
+                .json({
+                    "status" : "success",
+                    "title" : article.title
+                });
         }
     });    
 } 
