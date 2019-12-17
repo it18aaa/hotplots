@@ -18,15 +18,24 @@ module.exports.fetchById = (req, res) => {
 
 module.exports.articleList = (req, res) => {
     console.log('articleList');
-    sendJsonResponse(res, 200, {"status" : "success"});
+    //sendJsonResponse(res, 200, {"status" : "success"});
+
+    Article.find().exec(err, (err, docs) => {
+        sendJsonResponse(res, 200, docs);
+    })
+
 }
 
-module.exports.articleCreate = (req, res) => {
-    console.log(`create new article: title: ${req.body.title} author ${req.body.author}`);    
+module.exports.articleCreate = (req, res) => {       
     Article.create({
         title: req.body.title,
         author: req.body.author,
         body: req.body.body,
+        tags: req.body.tags.split(",").map((item)=> { 
+           return item.trim()
+        }),
+        picture: req.body.picture,
+        author: req.body.author,        
         date: new Date()
     }, (err, article) => {    // callback
         if(err) {

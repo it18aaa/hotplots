@@ -25,7 +25,9 @@ module.exports.doCreate = (req, res) => {
     var postData = {
         title: req.body.title,
         body: req.body.body,
-        tags: req.body.tags
+        tags: req.body.tags,
+        author: 'test user',
+        picture: req.body.picture
     };
 
     var requestOpt = {

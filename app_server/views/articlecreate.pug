@@ -1,11 +1,20 @@
 extends layout
 
+
+//- title
+//- body
+//- author
+//- img
+//- date
+//- tags
+
+
 block content
     h2.display-3 Create an article
     p Write a new article
     .row.border
-        .col-md-2
-        .col-md-6
+        .col-md-1
+        .col-md-10
             form(action='', method='POST')
                 .form-group
                     label(for='title') Article Title
@@ -18,8 +27,10 @@ block content
                     label(for='tags') Tags
                     input#tags.form-control(type='text',name='tags')
                     help A comma separated list of tags
+                .form-group
+                    label(for='picture') Picture 
+                    input#picture.form-control(type='text',name='picture')                    
                 .form-group.text-right
                     input.btn.btn-success(type='submit')
-                    input.btn.btn-fail(type='cancel')
-        .col-md-2
-        .col-md-2
+                    input.btn.btn-fail(type='cancel')        
+        .col-md-1
