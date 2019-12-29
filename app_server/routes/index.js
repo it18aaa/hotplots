@@ -15,7 +15,7 @@ router.get('/', ctrlMain.index);
 router.get('/articles/create', ctrlArticle.create);
 router.post('/articles/create', ctrlArticle.doCreate);
 router.get('/articles/list', ctrlArticle.list);
-router.get('/articles/:id', ctrlArticle.read);
+router.get('/articles/read/:articleid', ctrlArticle.read);
 
 // question related routes
 //

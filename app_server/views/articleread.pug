@@ -27,22 +27,24 @@ block content
             
             button.btn.btn-info Comment
     .row.border-top
-      h4 Comments
-      .col-12
-        each comment in comments
-          .row.bg-secondary.mb-3.mt-3
-            .col-3
-              small
-                span.text-right.text-small= moment(comment.date).format('DD/MM/YYYY hh:mm')
-            .col-7
-              h5 #{comment.name}
-              p #{comment.body}
-            .col-2
-              if comment.likes
-                p #{comment.likes} likes
-              button.btn.btn-secondary.btn-sm Like
+      if comments
+        h4 Comments
+        .col-12
+          each comment in comments
+            .row.bg-secondary.mb-3.mt-3
+              .col-3
+                small
+                  span.text-right.text-small= moment(comment.date).format('DD/MM/YYYY hh:mm')
+              .col-7
+                h5 #{comment.name}
+                p #{comment.body}
+              .col-2
+                if comment.likes
+                  p #{comment.likes} likes
+                button.btn.btn-secondary.btn-sm Like
+                
 
-        
+          
 
       
            

@@ -15,8 +15,8 @@ block content
       each art in articles  
         
         .card
-          if art.img
-            img.card-img-top(src=`/img/${art.img}`)
+          if art.picture
+            img.card-img-top(src=`/img/${art.picture}`)
           .card-body
             p.text-small 
               span= moment(art.date).format('DD MMMM YYYY')  
@@ -26,7 +26,7 @@ block content
               .col-6
                 p #{art.likes} likes
               .col-6.text-right                   
-                a.btn.btn-sm.btn-info(href=`/articles/${art.id}`) Read
+                a.btn.btn-sm.btn-info(href=`/articles/read/${art._id}`) Read
       
   
   

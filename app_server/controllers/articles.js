@@ -11,13 +11,16 @@ var apiOptions = {
 };
 
 // create an article
-//
+// GET part, send form
 module.exports.create = (req, res) => {
     //  TODO: stub
     console.log('ctrlArtcle.create() called');
     res.render('articlecreate');
 };
 
+// create an article
+// POST - do stuff with form data
+//
 module.exports.doCreate = (req, res) => {
     // set up request 
     var path = '/api/article/create';
@@ -35,7 +38,18 @@ module.exports.doCreate = (req, res) => {
         method: 'POST',
         json: postData
     };
+
     request(requestOpt, (apierr, apires, apibody) => {
+        if (apierr) {
+            console.log("request error");
+            console.log(err);
+        } else if (apires.statusCode === 200) {
+            console.log("request - status 200");
+            console.log(apibody);
+        } else {
+            console.log("request status code ");
+            console.log(apires.statusCode);
+        }
         res.redirect('/articles/list');
     })
 };
@@ -44,23 +58,42 @@ module.exports.doCreate = (req, res) => {
 //
 module.exports.read = (req, res) => {
 
-    id = req.params.id;
+    id = req.params.articleid;
 
-    // TODO: hacked in processing of body text, so we can have
-    // line breaks- needs to be refactored!
-    //
-    body = articles.data[id].body.replace(/\n/g, "<br />");
-    console.log(`body : ${body}`);
+    // set up request 
+    var path = '/api/articles/read/';
 
-    res.render('articleread', {
-        date: articles.data[id].date,
-        author: articles.data[id].author,
-        title: articles.data[id].title,
-        body: body,
-        comments: articles.data[id].comments,
-        likes: articles.data[id].likes,
-        tags: articles.data[id].tags,
-        img: articles.data[id].img
+    var requestOpt = {
+        url: apiOptions.server + path + id,
+        method: 'GET',
+        json: {}
+    };
+
+    request(requestOpt, (apierr, apires, article) => {
+        if (apierr) {
+            res.send("error page!");
+        } else {
+            if (apires.statusCode == 200) {
+                body = article.body.replace(/\n/g, "<br />");
+                res.render('articleread', {
+                    date: article.date,
+                    author: article.author,
+                    title: article.title,
+                    body: body,
+                    comments: article.comments,
+                    likes: article.likes,
+                    tags: article.tags,
+                    img: article.picture
+                });
+            } else {
+                // res.render('error', {
+                //     message: "stuff went wrong",
+                //     error: apierr
+                // });
+                res.redirect('/');
+            }
+        }
+
     });
 
 };
@@ -69,7 +102,26 @@ module.exports.read = (req, res) => {
 //
 module.exports.list = (req, res) => {
     order = req.params.order;
-    res.render('articlelist', {
-        articles: articles.data
+
+    // set up request 
+    var path = '/api/article/list';
+
+    var requestOpt = {
+        url: apiOptions.server + path,
+        method: 'GET',
+        json: {}
+    };
+
+
+    request(requestOpt, (apierr, apires, articles) => {
+        //res.send(apibody);
+
+        res.render('articlelist', {
+            articles: articles
+        });
+        console.log(`articles.length = ${articles.length}`)
+        //res.send(articles);
     });
+
+
 }
