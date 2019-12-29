@@ -1,5 +1,6 @@
 var express = require('express');
 var ctrlArticle = require('../controllers/articles');
+var ctrlAuth = require('../controllers/authentication');
 
 var router = express.Router();
 
@@ -12,7 +13,13 @@ router.get('/article/list/sort/:sortorder/', ctrlArticle.articleList);
 
 // some basic article api functions
 router.get('/articles/read/:articleid', ctrlArticle.fetchById);
-
 router.post('/article/create', ctrlArticle.articleCreate);
+
+
+// authentication endpoints
+
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+
 
 module.exports = router;
