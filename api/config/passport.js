@@ -17,25 +17,20 @@ passport.use(new LocalStrategy({
             if (err) {
                 return done(err);
             }
-
             // no user found
             if (!user) {
                 return done(null, false, {
                     message: 'Incorrect username.'
                 });            
             }
-
             // check password
             if (!user.validatePassword(password)) {
                 return done(null, false, {
                     message: "Incorrect Password."
                 });
             }
-
             // all okay, return user
             return done(null, user);
-
-
         })
     }
 ));
