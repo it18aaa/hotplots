@@ -1,0 +1,17 @@
+<h1>{{ vm.title }}</h1>
+
+<h3>Latest articles</h3>
+<div ng-repeat="a in vm.articlesByDate">
+    <h3>{{ a.title }}</h3>
+    <p>{{ a.body }}...</p>
+    <a href="#">{{a._id}}</a>
+</div>
+
+<h3>Most popular articles</h3>
+<div ng-repeat="a in vm.articlesByLikes">
+    <h3>{{ a.title }}</h3>
+    <p>{{ a.body }}...</p>
+</div>
+
+<hr />
+Other stuff goes here :-)

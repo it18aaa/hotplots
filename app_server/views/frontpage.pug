@@ -1,72 +1,72 @@
 extends layout
 
 block content
-  .row
-    .col-md-12
-      h1 HotPlots! 
-      p Online Gardening Community
-  .row.p-2
-    .col-md-8.border.p-2
-      // article row - 
-      //
-      .row.border-bottom
-        .col-12
-          h4.border-bottom Top Articles
-          .row.p-2
-            each a in artByFeat
-              .col-md-4.border-right
-                h6.border-bottom #{a.title}
-                if a.img
-                  img.w-25.mr-1.float-left(src=`/img/${a.img}`)
-                small.text-wrap #{a.body.slice(0,150)}...
-                .row.border-top
-                  .col-md-6
-                    small #{a.likes} likes
-                  .col-md-6 
-                    p.text-right
-                      a(href=`/articles/${a.id}`) read
-                    
-      .row.border-bottom
-        .col-12
-          h4.border-bottom Featured Author
-          .row.p-2
-            each a in artByAuth
-              .col-md-4.border-right
-                h6.border-bottom #{a.title}
-                if a.img
-                  img.w-25.mr-1.float-left(src=`/img/${a.img}`)
-                small.text-wrap #{a.body.slice(0,150)}... 
-                p.text-right
-                  a(href=`/articles/${a.id}`) read
-      // article row - fea
-      //
-      .row.border-bottom
-        .col-12
-          h4.border-bottom Tag of the Day
-          .row.p-2
-            each a in artByTag
-              .col-md-4.border-right
-                h6.border-bottom #{a.title}
-                if a.img
-                  img.w-25.mr-1.float-left(src=`/img/${a.img}`)
-                small.text-wrap #{a.body.slice(0,150)}... 
-                p.text-right
-                  a(href=`/articles/${a.id}`) read  
-      .row
-        .col-md-12  
-          a(href='/questions/list') All Articles           
+    .row
+        .col-md-12
+            h1 HotPlots! 
+            p Online Gardening Community
+    .row.p-2
+        .col-md-8.border.p-2
+            // article row - 
+            //
+            .row.border-bottom
+                .col-12
+                    h4.border-bottom Top Articles
+                    .row.p-2
+                        each a in artByFeat
+                            .col-md-4.border-right
+                                h6.border-bottom #{a.title}
+                                if a.img
+                                    img.w-25.mr-1.float-left(src=`/img/${a.img}`)
+                                small.text-wrap #{a.body.slice(0,150)}...
+                                .row.border-top
+                                    .col-md-6
+                                        small #{a.likes} likes
+                                    .col-md-6 
+                                        p.text-right
+                                            a(href=`/articles/${a.id}`) read
 
-    .col-md-4.border.p-2
-      .row.border-bottom  
-        .col-12
-          h5.p-1 Most active questions
-            each q in questions
-              h6 
-                a(href='#') #{q.title}
-              small #{q.body.slice(0,150)}
+            .row.border-bottom
+                .col-12
+                    h4.border-bottom Featured Author
+                    .row.p-2
+                        each a in artByAuth
+                            .col-md-4.border-right
+                                h6.border-bottom #{a.title}
+                                if a.img
+                                    img.w-25.mr-1.float-left(src=`/img/${a.img}`)
+                                small.text-wrap #{a.body.slice(0,150)}... 
+                                p.text-right
+                                    a(href=`/articles/${a.id}`) read
+            // article row - fea
+            //
+            .row.border-bottom
+                .col-12
+                    h4.border-bottom Tag of the Day
+                    .row.p-2
+                        each a in artByTag
+                            .col-md-4.border-right
+                                h6.border-bottom #{a.title}
+                                if a.img
+                                    img.w-25.mr-1.float-left(src=`/img/${a.img}`)
+                                small.text-wrap #{a.body.slice(0,150)}... 
+                                p.text-right
+                                    a(href=`/articles/${a.id}`) read  
+            .row
+                .col-md-12  
+                    a(href='/questions/list') All Articles           
 
-              p #{q.rating} votes, #{q.answers.length} answers.
-          a(href='/questions/list') All Questions
-                
+        .col-md-4.border.p-2
+            .row.border-bottom  
+                .col-12
+                    h5.p-1 Most active questions
+                        each q in questions
+                            h6 
+                                a(href='#') #{q.title}
+                            small #{q.body.slice(0,150)}
+
+                            p #{q.rating} votes, #{q.answers.length} answers.
+                    a(href='/questions/list') All Questions
+
 
 

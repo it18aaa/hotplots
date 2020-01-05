@@ -2,13 +2,17 @@
 //
 var express = require('express');
 var router = express.Router();
+const ctrlAngularApp = require('../controllers/angularApp');
 const ctrlMain = require('../controllers/main');
 const ctrlArticle = require('../controllers/articles');
 const ctrlQuestions = require('../controllers/questions');
 
 // Frontpage
 //
-router.get('/', ctrlMain.index);
+
+router.get('/', ctrlAngularApp.angularApp);
+router.get('/oldhome', ctrlMain.index);
+
 
 // article related routes
 //
