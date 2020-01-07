@@ -1,17 +1,37 @@
-<h1>{{ vm.title }}</h1>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ vm.title }}</h1>
+            <p>Online Gardening Community
+            </p>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="cold-md-8 border p-2">
+            <div class="row border-bottom">
+                <div class="col-12">
+                    <h4 class="border-bottom">Latest Articles</h4>
+                    <div class="row p-2">
+                        <div ng-repeat="a in vm.articlesByDate" class="col-md-4 border-right">
+                            <div article-card article="a"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<h3>Latest articles</h3>
-<div ng-repeat="a in vm.articlesByDate">
-    <h3>{{ a.title }}</h3>
-    <p>{{ a.body }}...</p>
-    <a href="#">{{a._id}}</a>
+            <div class="row border-bottom">
+                <div class="col-12">
+                    <h4 class="border-bottom">Most popular</h4>
+                    <div class="row p-2">
+                        <div ng-repeat="a in vm.articlesByLikes" class="col-md-4 border-right">
+                            <div article-card article="a"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 </div>
-
-<h3>Most popular articles</h3>
-<div ng-repeat="a in vm.articlesByLikes">
-    <h3>{{ a.title }}</h3>
-    <p>{{ a.body }}...</p>
-</div>
-
-<hr />
-Other stuff goes here :-)

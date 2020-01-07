@@ -11,8 +11,10 @@ html(ng-app='hotplots')
         script(src='/angular/angular.min.js')
         script(src='/lib/angular-route.min.js')
         script(src='/app.js')
+        script(src='/common/directives/articleCard.directive.js')
         script(src='/home/home.controller.js')
-        script(src='common/services/articles.service.js')
+        script(src='/common/services/articles.service.js')
+
     body
         nav.navbar.navbar-expand-sm.navbar-dark.info-color.bg-primary.sticky-top
             a.navbar-brand(href='/') HotPlots
