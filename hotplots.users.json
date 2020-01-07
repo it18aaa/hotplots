@@ -1,0 +1,19 @@
+{
+    "_id": {
+        "$oid": "5e08d9068008aa225cf8db0c"
+    },
+    "name": "biffo",
+    "email": "biffo@email.com",
+    "salt": "3f4e0b76fdca54afee588dd7ead26535",
+    "hash": "31b2e94b05ddac5803943dedfffbb1e575d769e91ac35dacd4f8ca7d9cf370e455541f9d4df9eaec98688e5d911aa24ee6e3183b0b7ab0065dc31f1977d4db74",
+    "__v": 0
+} {
+    "_id": {
+        "$oid": "5e093c0513f1aa2a08494ce0"
+    },
+    "name": "biffo",
+    "email": "biffo@biffo.com",
+    "salt": "be128b1070cb7fc2b7ef2c89ba8c00a1",
+    "hash": "2fd3e100c9344659c8fbfc2b390ab6e36d2f3ef04a65f71cbf529a56fd891b91fe259a499359b8bd5ca0c3dde394dcb6db3800f85cf13910099e667725b910e3",
+    "__v": 0
+}
