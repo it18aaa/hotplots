@@ -12,26 +12,27 @@
         // vm use vm instead of $scope
         // vm = view model
         var vm = this;
-        vm.title = "Welcome to our gardening community website!";
 
-        vm.pageHeader = {
-            title: 'hotplots stuff'
-        };
-
-        // fetch articles by date
+        // fetch articles by date, 
+        // set view model data to first 3
+        //
         articles.getList('-date')
             .then((res) => {
-                    vm.articlesByDate = res.data.slice(0, 3);
-                },
+
+                vm.articlesByDate = res.data.slice(0, 3);
+            },
                 (e) => {
                     console.log(e);
                 }
             );
 
+        // fetch articles by likes, 
+        // and set view model data to first 3
+        //
         articles.getList('-likes')
             .then((res) => {
-                    vm.articlesByLikes = res.data.slice(0, 3);
-                },
+                vm.articlesByLikes = res.data.slice(0, 3);
+            },
                 (e) => {
                     console.log(e)
                 }

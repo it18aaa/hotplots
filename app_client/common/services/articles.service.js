@@ -21,12 +21,12 @@
                 // do error
                 return;
             }
-            return $http.get('/api/article/read/' + id.trim());
+            return $http.get('/api/articles/read/' + id.trim());
         }
 
         return {
-
-            getList: getList
+            getList: getList,
+            read: read
         };
     }
 })();

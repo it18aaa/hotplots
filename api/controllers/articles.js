@@ -102,3 +102,74 @@ module.exports.articleCreate = (req, res) => {
         }
     });
 }
+
+module.exports.articleComment = (req, res) => {
+
+    // if we have an articleid and a comment body, we're good to go
+    if (req.params.articleid && req.body.body) {
+        
+        filter = { _id: req.params.articleid };
+
+        // construct the comment
+        var comment = {
+            body: req.body.body,
+            author: req.body.author,
+            date: new Date(),
+            likes: 0,
+        };
+
+        // we want to push the comment onto the array
+        update = {
+            $push:
+                { comments: comment }
+        };
+
+        // return the new instance of the document
+        options = { new: true };
+
+        Article.findOneAndUpdate(filter, update, options,
+            (error, doc) => {
+                if (!error) {
+                    console.log(doc);
+                    sendJsonResponse(res, 200, {"message":"comment inserted"});
+                } else {
+                    sendJsonResponse(res, 400, error);
+                }
+            }
+        );
+    } else {
+        sendJsonResponse(res, 400, {"message": "article not found or comment too short"});
+    }
+
+};
+
+module.exports.articleCommentOld = (req, res) => {
+    console.log("going to try and create something!");
+    var id = req.params.articleid;
+    if (id) {
+        Article.findById(id)
+            .select('comments')
+            .exec((err, article) => {
+                if (!err) {
+                    //  we've found the article
+                    //console.log(article);
+                    //sendJsonResponse(res, 200, { "message": "Adding comment" });
+                    article.comments.push({
+                        title: req.body.title,
+                        body: req.body.body,
+                        author: req.body.author,
+                        date: req.body.date,
+                    });
+                    article.save()
+
+
+                } else {
+                    sendJsonResponse(res, 400, err);
+                }
+
+            });
+    } else {
+        sendJsonResponse(res, 404, { "message": "Article not found" })
+    }
+}
+

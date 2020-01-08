@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-3 align-top">
+        <h6>{{comment.author}}</h6>
+        <p class="small">{{ comment.date | date:'dd/MM/yy hh:mm' }} </p>        
+    </div>
+    <div class="col-8">
+        <p>{{ comment.body }}</p>
+    </div>
+    <div class="col-1 align-bottom border">
+        <button class="btn btn-sm btn-info">Reply</button>
+    </div>
+
+</div>

@@ -2,7 +2,7 @@ doctype html
 html(ng-app='hotplots')
     head
         title= title
-
+        base(href='/')
         link(rel='stylesheet' href='/css/bootstrap.min.css')
         link(rel='stylesheet' href='/css/style.css')
         script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
@@ -12,7 +12,9 @@ html(ng-app='hotplots')
         script(src='/lib/angular-route.min.js')
         script(src='/app.js')
         script(src='/common/directives/articleCard.directive.js')
+        script(src='/common/directives/articleComment.directive.js')
         script(src='/home/home.controller.js')
+        script(src='/article/articleRead.controller.js')
         script(src='/common/services/articles.service.js')
 
     body
