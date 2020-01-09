@@ -1,0 +1,29 @@
+<div class="row border-top border-bottom" >
+    <div class="col-md-8">
+        <a href="/article/read/{{ article._id }}">
+            <h6>{{article.title}}</h6>
+        </a>
+    </div>
+    <div class="col-md-4 text-right">
+        {{ article.date | date:'dd MMMM yyyy'}}<br />
+        {{ article.author }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <img ng-src="/img/{{ article.picture }}" class="w-25 mr-1 float-left" />
+        <small class="text-wrap">
+            {{ article.body }}...
+        </small>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        {{ article.likes }} likes
+    </div>
+    <div class="col-md-6">
+        {{ article.comments }} comments
+    </div>
+</div>
