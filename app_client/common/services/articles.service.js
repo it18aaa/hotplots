@@ -21,9 +21,19 @@
             return $http.get('/api/articles/read/' + id.trim());
         }
 
+        var create = function (article) {
+            console.log('doing create!');
+
+            var url = '/api/article/create';
+
+            return $http.post(url, article);
+                
+        }
+
         return {
             getList: getList,
-            read: read
+            read: read,
+            create: create
         };
     }
 })();
