@@ -17,6 +17,11 @@ function config($routeProvider, $locationProvider) {
             controller:  'articleListCtrl',
             controllerAs: 'vm'
         })
+        .when('/article/create', {
+            templateUrl: '/article/create.view.html',
+            controller: 'articleCreateCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: '/'
         });
