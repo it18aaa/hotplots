@@ -18,7 +18,7 @@ router.get('/article/list/sort/:sortorder/', ctrlArticle.articleList);
 
 // some basic article api functions
 router.get('/articles/read/:articleid', ctrlArticle.fetchById);
-router.post('/article/create', auth, ctrlArticle.articleCreate);
+router.post('/article/create', ctrlArticle.articleCreate);
 router.post('/article/:articleid/comment', ctrlArticle.articleComment);
 
 // authentication endpoints

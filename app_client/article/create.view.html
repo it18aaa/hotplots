@@ -8,31 +8,35 @@
         
         <div class="form-group">
             <label for="title">Article Title</label>
-            <input type="text" id="title" class="form-control">
+            <input ng-model="vm.form.title" type="text" id="title" class="form-control">
         </div>
 
         <div class="form-group">
             <label for="synopsis">Synopsis</label>
-            <textarea name="" id="synopsis" cols="30" rows="10" class="form-control"></textarea>
+            <textarea ng-model="vm.form.synopsis" 
+                      name="" 
+                      id="synopsis" 
+                      cols="30" rows="3" 
+                      class="form-control"></textarea>
         </div>
 
         <div class="form-group">
             <label for="body">Article</label>
-            <textarea name="" id="body" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="" ng-model="vm.form.body"  id="body" cols="30" rows="10" class="form-control"></textarea>
         </div>
         
         <div class="form-group">
             <label for="tags">Tags</label>
-            <input type="text" id="tags" class="form-control">
+            <input ng-model="vm.form.tags" type="text" id="tags" class="form-control">
         </div>
 
         <div class="form-group">
             <label for="picture">Picture</label>
-            <input type="text" id="picture" class="form-control">
+            <input ng-model="vm.form.picture" type="text" id="picture" class="form-control">
         </div>
 
         <div class="form-group text-right">
-            <input type="submit" class="btn btn-success" >            
+            <input type="submit" class="btn btn-success" ng-click="vm.formSubmit()">            
         </div>
 
     </div>
