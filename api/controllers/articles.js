@@ -33,7 +33,7 @@ module.exports.articleList = (req, res) => {
     var fields = "_id title likes author body date picture tags";
     var sortOrder = "-date";
     var limit = 100;
-    var summarySize = 100;
+    var summarySize = 150;
 
     // search criteria based on input
     //

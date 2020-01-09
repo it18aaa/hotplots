@@ -12,6 +12,11 @@ function config($routeProvider, $locationProvider) {
             controller: 'articleReadCtrl',
             controllerAs: 'vm'
         })
+        .when('/article/list/:sort', {
+            templateUrl: '/article/list.view.html',
+            controller:  'articleListCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: '/'
         });

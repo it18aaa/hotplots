@@ -7,12 +7,9 @@
 
         var getList = function (sortOrder) {
             if (sortOrder === undefined) {
-                sortOrder = 'date';
+                sortOrder = '-date';
             }
 
-            // if(sortOrder === 'likes') {
-            //     sortOrder = '-likes';
-            // }
             return $http.get('/api/article/list/sort/' + sortOrder.trim());
         }
 
