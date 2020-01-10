@@ -18,7 +18,9 @@ html(ng-app='hotplots')
         script(src='/article/articleRead.controller.js')
         script(src='/article/articleList.controller.js')
         script(src='/article/articleCreate.controller.js')
+        script(src='/user/registerCtrl.controller.js')
         script(src='/common/services/articles.service.js')
+        script(src='/common/services/user.service.js')
 
     body
         nav.navbar.navbar-expand-sm.navbar-dark.info-color.bg-primary.sticky-top
@@ -34,6 +36,7 @@ html(ng-app='hotplots')
                     li.nav-item.dropdown
                         a#navbarDropdownMenuLink.nav-link.dropdown-toggle.waves-effect.waves-light(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') User
                         .dropdown-menu.dropdown-info(aria-labelledby='navbarDropdownMenuLink')
+                            a.dropdown-item.waves-effect.waves-light(href='/register') Register
                             a.dropdown-item.waves-effect.waves-light(href='/article/create') Create an article
                             a.dropdown-item.waves-effect.waves-light(href='/questions/create') Ask a question
                             .dropdown-divider

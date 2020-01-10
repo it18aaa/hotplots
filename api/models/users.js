@@ -18,13 +18,12 @@ var userSchema = new mongoose.Schema({
 });
 
 // Authentication methods associated with model
-// Adapted from Getting MEAN
+// Adapted from Getting MEAN by Simon Holmes
 //
 userSchema.methods.setPassword = function (password) {
     // create a random salt
     this.salt = crypto.randomBytes(16).toString('hex');
-    // debug junk
-    console.log(`setPassword() - password = ${password}, this.salt = ${this.salt}`);
+ 
     // use the salt and password to create encrypted hash
     // requires digest
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 64, 'sha512').toString('hex');
@@ -34,10 +33,6 @@ userSchema.methods.validatePassword = function (password) {
 
     // create a hash using the stored salt and the password passed
     var hash = crypto.pbkdf2Sync(password, this.salt, 10000, 64, 'sha512').toString('hex');
-
-    console.log(`testing password`);
-    console.log(`     hash = ${hash}`);
-    console.log(`this.hash = ${this.hash}`);
 
     // compare hashes,are they the same?
     return this.hash === hash;
