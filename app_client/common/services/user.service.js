@@ -32,10 +32,8 @@
                         storeJWT(response.data.token);
                     },
                     response => {
-                        // error handler - 
-                        // error handling defered to caller
-                        // console.log(res.status); 
-                        // console.log(res.data);                                      
+                        // defer error to caller      
+                        throw response; 
                     })
         };
 

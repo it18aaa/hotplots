@@ -26,7 +26,8 @@
                         vm.response = response;
                     },
                     response => {
-                        vm.userRegFail = true;                     
+                        vm.userRegFail = true;    
+                        vm.showForm = false;                 
                     });
 
         }

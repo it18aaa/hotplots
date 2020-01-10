@@ -7,7 +7,7 @@
 
 <div ng-if="vm.userRegSuccess">Registered succesfully</div>
 
-<div ng-if="userRegFail">There was a problem registering</div>
+<div ng-if="vm.userRegFail">There was a problem registering</div>
 
 <div ng-if="vm.showForm">
     <div class="form-group">
@@ -29,6 +29,3 @@
         <input type="submit" class="btn btn-success" ng-click="vm.formSubmit()">
     </div>
 </div>
-
-
-    {{ vm.response }}
