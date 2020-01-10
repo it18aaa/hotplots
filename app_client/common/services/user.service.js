@@ -37,7 +37,7 @@
                     })
         };
 
-        var getInfo = function () {
+        let getInfo = function () {
             let token = getJWT();
             if (token) {
                 let encodedPayload = token.split('.')[1]

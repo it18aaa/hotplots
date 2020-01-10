@@ -7,9 +7,7 @@
         vm = this;
         vm.user = user.getInfo();
         
-
-        // are we logged in already
-
+        // are we logged in already?
         if (vm.user) {
             vm.alreadyRegistered = true;
             vm.showForm = false;
