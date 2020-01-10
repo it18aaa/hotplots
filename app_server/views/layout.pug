@@ -20,6 +20,7 @@ html(ng-app='hotplots')
         script(src='/article/articleCreate.controller.js')
         script(src='/user/registerCtrl.controller.js')
         script(src='/user/loginCtrl.controller.js')
+        script(src='/user/logoutCtrl.controller.js')
         script(src='/common/services/articles.service.js')
         script(src='/common/services/user.service.js')
 
@@ -39,6 +40,7 @@ html(ng-app='hotplots')
                         .dropdown-menu.dropdown-info(aria-labelledby='navbarDropdownMenuLink')
                             a.dropdown-item.waves-effect.waves-light(href='/register') Register
                             a.dropdown-item.waves-effect.waves-light(href='/login') Login
+                            a.dropdown-item.waves-effect.waves-light(href='/logout') Logout
                             a.dropdown-item.waves-effect.waves-light(href='/article/create') Create an article
                             a.dropdown-item.waves-effect.waves-light(href='/questions/create') Ask a question
                             .dropdown-divider

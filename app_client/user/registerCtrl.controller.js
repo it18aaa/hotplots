@@ -6,7 +6,7 @@
     function registerCtrl(user) {
         vm = this;
         vm.user = user.getInfo();
-        console.log(user.getInfo());
+        
 
         // are we logged in already
 
@@ -20,12 +20,12 @@
         vm.formSubmit = function () {
             user.register(vm.form)
                 .then(
-                    response => {
+                    success => {
                         vm.userRegSuccess = true;
                         vm.showForm = false;
-                        vm.response = response;
+                        vm.response = success;
                     },
-                    response => {
+                    reject => {
                         vm.userRegFail = true;    
                         vm.showForm = false;                 
                     });

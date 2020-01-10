@@ -32,6 +32,11 @@ function config($routeProvider, $locationProvider) {
             controller: 'loginCtrl',
             controllerAs: 'vm'
         })
+        .when('/logout', {
+            templateUrl: '/user/logout.view.html',
+            controller: 'logoutCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: '/'
         });
