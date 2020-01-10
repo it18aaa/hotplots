@@ -3,6 +3,7 @@
         .module('hotplots')
         .service('user', ['$http', '$window', user]);
 
+    // User authentication controll
     // adapted from Getting MEAN by Simon Holmes
     //
     function user($http, $window) {
@@ -26,18 +27,18 @@
             // error handling deferred to the caller
             return $http.post(regUrl, credentials)
                 .then(
-                    response => {
+                    success => {
                         // registration successful
                         // store token
-                        storeJWT(response.data.token);
+                        storeJWT(success.data.token);
                     },
-                    response => {
+                    reject => {
                         // defer error to caller      
-                        throw response;
+                        throw reject;
                     })
         };
 
-        var getInfo = function () {
+        let getInfo = function () {
             let token = getJWT();
             if (token) {
                 let encodedPayload = token.split('.')[1]

@@ -6,7 +6,6 @@
     function loginCtrl(user, $timeout) {
         vm = this;
         
-        
         // are we logged in already?
         // set up form variables
         vm.user = user.getInfo();
