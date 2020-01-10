@@ -22,6 +22,11 @@ function config($routeProvider, $locationProvider) {
             controller: 'articleCreateCtrl',
             controllerAs: 'vm'
         })
+        .when('/register', {
+            templateUrl: '/user/register.view.html', 
+            controller: 'registerCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: '/'
         });
