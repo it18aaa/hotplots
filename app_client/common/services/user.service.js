@@ -15,23 +15,23 @@
         // methods to deal with JWT and registering user
         let storeJWT = function (token) {
             $window.localStorage[key] = token;
-            console.log('storeJWT');
-            console.log(token);
         };
 
         let getJWT = function () {
             return $window.localStorage[key];
-            console.log('getJWT');
-            console.log(token);
         };
 
         let register = function (credentials) {
             return $http.post(regUrl, credentials)
                 .then(res => {
-                    console.log(res);
                     storeJWT(res.data.token);
                 })
         };
+
+        let getInfo = function (token) {
+            let encodedPayload = getJWT().split('.')[1];
+            return JSON.parse($window.atob(encodedPayload));
+        }
 
         let login = function (credentials) {
             return $http.post(loginUrl, credentials)
@@ -46,8 +46,8 @@
 
         let isAuthenticated = function () {
             let token = getJWT();
-            if (token) {
-                let payload = JSON.parse($window.atob(token.split('.')[1]));
+            if (token) {                 
+                var payload = getInfo()
                 return payload.exp > Date.now() / 1000;
             } else {
                 return false;

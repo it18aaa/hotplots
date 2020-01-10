@@ -23,8 +23,7 @@ var userSchema = new mongoose.Schema({
 userSchema.methods.setPassword = function (password) {
     // create a random salt
     this.salt = crypto.randomBytes(16).toString('hex');
-    // debug junk
-    console.log(`setPassword() - password = ${password}, this.salt = ${this.salt}`);
+ 
     // use the salt and password to create encrypted hash
     // requires digest
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 64, 'sha512').toString('hex');
