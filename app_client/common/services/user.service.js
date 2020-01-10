@@ -22,15 +22,31 @@
         };
 
         let register = function (credentials) {
+            // returns promise so that 
+            // error handling deferred to the caller
             return $http.post(regUrl, credentials)
-                .then(res => {
-                    storeJWT(res.data.token);
-                })
+                .then(
+                    response => {
+                        // registration successful
+                        // store token
+                        storeJWT(response.data.token);
+                    },
+                    response => {
+                        // error handler - 
+                        // error handling defered to caller
+                        // console.log(res.status); 
+                        // console.log(res.data);                                      
+                    })
         };
 
-        let getInfo = function (token) {
-            let encodedPayload = getJWT().split('.')[1];
-            return JSON.parse($window.atob(encodedPayload));
+        var getInfo = function () {
+            let  token = getJWT();
+            if (token) {
+                let encodedPayload = token.split('.')[1]
+                return JSON.parse($window.atob(encodedPayload));
+            } else {
+                return false;
+            }
         }
 
         let login = function (credentials) {
@@ -46,7 +62,7 @@
 
         let isAuthenticated = function () {
             let token = getJWT();
-            if (token) {                 
+            if (token) {
                 var payload = getInfo()
                 return payload.exp > Date.now() / 1000;
             } else {
@@ -60,7 +76,8 @@
             isAuthenticated: isAuthenticated,
             getJWT: getJWT,
             storeJWT: storeJWT,
-            register: register
+            register: register,
+            getInfo: getInfo
         }
 
     }

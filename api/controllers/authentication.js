@@ -14,7 +14,7 @@ var sendJSONresponse = (res, status, content) => {
 module.exports.register = (req, res) => {
     // validate required fields
 
-    console.log(req);
+    
     if (!req.body.name || !req.body.email || !req.body.password) {
         sendJSONresponse(res, 400, {
             "message": "All fields required"
@@ -26,7 +26,7 @@ module.exports.register = (req, res) => {
     var user = new User();
 
     // debug stuff
-    console.log(`name = ${req.body.name}, email = ${req.body.email}, pass = ${req.body.password}`);
+    //console.log(`name = ${req.body.name}, email = ${req.body.email}, pass = ${req.body.password}`);
 
     // set name, email and password
     user.name = req.body.name;
@@ -37,11 +37,13 @@ module.exports.register = (req, res) => {
     user.save(function (err) {
         var token;
         if (err) {
-            sendJSONresponse(res, 404, err);
+            sendJSONresponse(res, 400, err);
+            console.log('User registration error:-')
+            console.log(err);
         } else {
             // return json web token
             token = user.generateJwt();
-            sendJSONresponse(res, 200, {
+            sendJSONresponse(res, 201, {
                 "token": token
             });
         }
