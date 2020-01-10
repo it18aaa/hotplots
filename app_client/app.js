@@ -27,6 +27,11 @@ function config($routeProvider, $locationProvider) {
             controller: 'registerCtrl',
             controllerAs: 'vm'
         })
+        .when('/login', {
+            templateUrl: '/user/login.view.html',
+            controller: 'loginCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: '/'
         });

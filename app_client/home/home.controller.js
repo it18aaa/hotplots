@@ -1,7 +1,5 @@
 (function () {
 
-
-
     angular
         .module('hotplots')
         .controller('homeCtrl', ['$scope', 'articles', homeCtrl]);

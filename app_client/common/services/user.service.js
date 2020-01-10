@@ -33,12 +33,12 @@
                     },
                     response => {
                         // defer error to caller      
-                        throw response; 
+                        throw response;
                     })
         };
 
         var getInfo = function () {
-            let  token = getJWT();
+            let token = getJWT();
             if (token) {
                 let encodedPayload = token.split('.')[1]
                 return JSON.parse($window.atob(encodedPayload));
@@ -49,9 +49,13 @@
 
         let login = function (credentials) {
             return $http.post(loginUrl, credentials)
-                .then(res => {
-                    storeJWT(res.data.token);
-                })
+                .then(
+                    res => {
+                        storeJWT(res.data.token);
+                    },
+                    error => {
+                        throw error;
+                    })
         };
 
         let logout = function () {
