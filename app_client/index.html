@@ -23,10 +23,12 @@
     <script src="/common/directives/articleCard.directive.js"></script>
     <script src="/common/directives/articleListCard.directive.js"></script>
     <script src="/common/directives/articleComment.directive.js"></script>
+    <script src="/common/directives/navbar.directive.js"></script>
     <script src="/home/home.controller.js"></script>
     <script src="/article/articleRead.controller.js"></script>
     <script src="/article/articleList.controller.js"></script>
     <script src="/article/articleCreate.controller.js"></script>
+    
     <script src="/user/registerCtrl.controller.js"></script>
     <script src="/user/loginCtrl.controller.js"></script>
     <script src="/user/logoutCtrl.controller.js"></script>
@@ -36,39 +38,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark info-color bg-primary sticky-top">
-        <a class="navbar-brand" href="/">HotPlots</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/article/list/date">Articles</a>
-                </li>
-                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/questions/list">Q&A</a></li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle waves-effect waves-light"
-                        id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">User</a>
-                    <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenuLink"><a
-                            class="dropdown-item waves-effect waves-light" href="/register">Register</a><a
-                            class="dropdown-item waves-effect waves-light" href="/login">Login</a><a
-                            class="dropdown-item waves-effect waves-light" href="/logout">Logout</a><a
-                            class="dropdown-item waves-effect waves-light" href="/article/create">Create an
-                            article</a><a class="dropdown-item waves-effect waves-light" href="/questions/create">Ask a
-                            question</a>
-                        <div class="dropdown-divider"></div><a class="dropdown-item waves-effect waves-light"
-                            href="#">Messages</a><a class="dropdown-item waves-effect waves-light" href="#">Policies</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline">
-                <div class="md-form"><input class="form-control input-sm" type="text" placeholder="Search"
-                        aria-label="Search" /></div>
-            </form>
-        </div>
-    </nav>
-
-
+    <div navbar></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-1">
