@@ -1,0 +1,55 @@
+<!DOCTYPE html5>
+<html lang="en" ng-app='hotplots'>
+
+<head>
+    <meta charset="utf-8>">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ vm.pageTitle }}</title>
+    <base href="/">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
+        integrity="sha256-fTuUgtT7O2rqoImwjrhDgbXTKUwyxxujIMRIK7TbuNU=" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script src="/angular/angular.min.js"></script>
+    <script src="/lib/angular-route.min.js"></script>
+    <script src="/app.js"></script>
+    <script src="/common/directives/articleCard.directive.js"></script>
+    <script src="/common/directives/articleListCard.directive.js"></script>
+    <script src="/common/directives/articleComment.directive.js"></script>
+    <script src="/common/directives/navbar.directive.js"></script>
+    <script src="/home/home.controller.js"></script>
+    <script src="/article/articleRead.controller.js"></script>
+    <script src="/article/articleList.controller.js"></script>
+    <script src="/article/articleCreate.controller.js"></script>
+    
+    <script src="/user/registerCtrl.controller.js"></script>
+    <script src="/user/loginCtrl.controller.js"></script>
+    <script src="/user/logoutCtrl.controller.js"></script>
+    <script src="/common/services/articles.service.js"></script>
+    <script src="/common/services/user.service.js"></script>
+
+</head>
+
+<body>
+    <div navbar></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-10">
+                <div ng-view></div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
