@@ -5,23 +5,36 @@
             class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/article/list/date">Articles</a>
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="/article/list/date">Articles</a>
             </li>
-            <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/questions/list">Q&A</a></li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle waves-effect waves-light"
-                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">User</a>
-                <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenuLink"><a
-                        class="dropdown-item waves-effect waves-light" href="/register">Register</a><a
-                        class="dropdown-item waves-effect waves-light" href="/login">Login</a><a
-                        class="dropdown-item waves-effect waves-light" href="/logout">Logout</a><a
-                        class="dropdown-item waves-effect waves-light" href="/article/create">Create an
-                        article</a><a class="dropdown-item waves-effect waves-light" href="/questions/create">Ask a
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="/questions/list">Q&A</a>
+            </li>
+                
+            <li ng-if="user" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.name}}</a>
+                <div class="dropdown-menu dropdown-info" aria-labelledby="navbarDropdownMenuLink">
+                    
+                    <a class="dropdown-item waves-effect waves-light" href="/logout">Logout</a>
+                    <a class="dropdown-item waves-effect waves-light" href="/article/create">Create an
+                        article</a>
+                    <a class="dropdown-item waves-effect waves-light" href="/questions/create">Ask a
                         question</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item waves-effect waves-light"
-                        href="#">Messages</a><a class="dropdown-item waves-effect waves-light" href="#">Policies</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item waves-effect waves-light" href="#">Messages</a>
+                    <a class="dropdown-item waves-effect waves-light" href="#">Policies</a>
                 </div>
             </li>
+
+            <li ng-if="!user" class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="/login">Login</a>
+            </li>
+            <li ng-if="!user" class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="/register">Register</a>
+            </li>
+
         </ul>
         <form class="form-inline">
             <div class="md-form"><input class="form-control input-sm" type="text" placeholder="Search"
@@ -29,4 +42,3 @@
         </form>
     </div>
 </nav>
-{{ user }}
