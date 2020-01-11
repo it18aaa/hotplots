@@ -3,12 +3,16 @@
         .module('hotplots')
         .service('user', ['$http', '$window', user]);
 
-    // User authentication controll
+    // User authentication control
     // adapted from Getting MEAN by Simon Holmes
     //
     function user($http, $window) {
+        // user info variable;
+        // persist the same variable in memory
+        // so that we can watch for changes!
+        var info = false;
 
-        // config
+        // route config
         let key = 'hotplotsJWT';
         let regUrl = '/api/register';
         let loginUrl = '/api/login';
@@ -39,13 +43,21 @@
         };
 
         let getInfo = function () {
-            let token = getJWT();
-            if (token) {
-                let encodedPayload = token.split('.')[1]
-                return JSON.parse($window.atob(encodedPayload));
-            } else {
-                return false;
+            // if info object isn't set
+            if (!info) {
+                // check token for info
+                let token = getJWT();
+                if (token) {
+                    // if info in token
+                    let encodedPayload = token.split('.')[1]
+                    info = JSON.parse($window.atob(encodedPayload));
+                } else {
+                    // otherwise clear info
+                    info = false;
+                }
             }
+            // return info
+            return info;
         }
 
         let login = function (credentials) {
@@ -61,8 +73,10 @@
 
         let logout = function () {
             $window.localStorage.removeItem(key);
+            info = false;
         };
 
+        // deprecated?
         let isAuthenticated = function () {
             let token = getJWT();
             if (token) {

@@ -1,11 +1,21 @@
 angular
     .module('hotplots')
-    .directive('navbar', ['user', function () {
+    .directive('navbar', ['user', function (user) {
         return {
             restrict: 'AE',
-            scope: {
-                article: '='                
+            scope: { 
+                
             },
-            templateUrl: '/common/partials/navbar.partial.html'
+            templateUrl: '/common/partials/navbar.partial.html',
+            link: function(scope) {
+                ///scope.user = user.getInfo();
+
+                scope.$watch(function() {
+                    return user.getInfo();
+                }, 
+                function(update) {
+                    scope.user = update;
+                })
+            }
         };
     }]);
