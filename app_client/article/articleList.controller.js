@@ -8,7 +8,7 @@
 
         articles.getList($routeParams.sort)
             .then(
-                (result) => {                    
+                (result) => {
                     vm.articles = result.data;
                 },
                 (error) => {

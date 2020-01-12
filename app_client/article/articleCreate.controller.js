@@ -17,10 +17,6 @@
 
             let userInfo = user.getInfo();
 
-            // console.log('creating an article')
-            // console.log('userInfo.name: '+ userInfo.name);
-            // console.log('userInfo._id' + userInfo._id);
-            // console.log(userInfo);
 
             var newArticle = {
                 title: vm.form.title,

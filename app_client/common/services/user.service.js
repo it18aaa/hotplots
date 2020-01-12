@@ -27,8 +27,8 @@
         };
 
         let register = function (credentials) {
-            // returns promise so that 
-            // error handling deferred to the caller
+            // returns promise to caller after,
+            // credentials are stored, 
             return $http.post(regUrl, credentials)
                 .then(
                     success => {

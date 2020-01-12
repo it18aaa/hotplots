@@ -5,8 +5,8 @@
                 {{ vm.article.title }}
                 <h6>
                     <p>{{ vm.article.author }}</p>
-                    <p>{{ vm.article.likes }} Likes, 
-                    {{ vm.article.comments.length }} Comments</p>
+                    <p>{{ vm.article.likes }} Likes,
+                        {{ vm.article.comments.length }} Comments</p>
                     <p class="border-bottom">Tagged:
                         <span ng-repeat="tag in vm.article.tags">
                             {{ tag }}
@@ -21,27 +21,32 @@
             <p class="articlebody text-wrap text-justify">{{ vm.article.body }}</p>
             <div class="row border-top">
                 <div class="col-6">
-                    <p>Share this article</p>                    
+                    <p>Share this article</p>
                 </div>
 
-                <div class="col-6 text-right">
+                <div ng-if="vm.user" class="col-6 text-right">
                     <button class="btn btn-info">Like</button>
-                    <button class="btn btn-info">Comment</button>
+                    <button ng-click="vm.commentFormToggle()" class="btn btn-info">Comment</button>
                 </div>
             </div>
         </div>
     </div>
-    <div ngif="vm.article.comments.length > 0" class="border-top" >
+
+    <div ng-if="vm.commentFormShow" class="row">
+        <div comment-form 
+             articleid="vm.article._id" 
+             userid="vm.user._id"
+             name="vm.user.name"
+             ></div>
+    </div>
+
+    <div ngif="vm.article.comments.length > 0" class="border-top">
         <h4>Comments</h4>
         <div class="col-12">
             <div ng-repeat="comment in vm.article.comments" class="mb-3 m-3 border-bottom">
-                <div article-comment comment="comment"></div>
+                <div article-comments comment="comment"></div>
             </div>
         </div>
-
-
-
-        
     </div>
 
 </div>
