@@ -4,6 +4,9 @@ var commentSchema = new mongoose.Schema({
     author: {
         type: String,
         required: true
+    },
+    authorid: {
+        type: String,
     },    
     body: {
         type: String,
@@ -36,7 +39,10 @@ var articleSchema = new mongoose.Schema({
     author: {
         type: String,
         required: true,
-    },    
+    }, 
+    authorid: {
+        type: String,
+    },   
     picture: String,
     date: {
         type: Date,

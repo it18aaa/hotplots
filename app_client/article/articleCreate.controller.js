@@ -1,18 +1,26 @@
 (function () {
 
     angular.module('hotplots')
-        .controller('articleCreateCtrl', ['$scope', 'articles', '$routeParams', articleCreateCtrl]);
+        .controller('articleCreateCtrl', ['$scope', 'articles', '$routeParams', 'user', articleCreateCtrl]);
 
-    function articleCreateCtrl($scope, articles, $routeParams) {
+    function articleCreateCtrl($scope, articles, $routeParams, user) {
         var vm = this;
 
         vm.formSubmit = function () {
             // TODO: Validation
 
             // 
-            var tags = vm.form.tags.split(",").map((tag) => {
-                return tag.trim()
-            });
+            var tags = vm.form.tags.split(",")
+                .map((tag) => {
+                    return tag.trim()
+                });
+
+            let userInfo = user.getInfo();
+
+            // console.log('creating an article')
+            // console.log('userInfo.name: '+ userInfo.name);
+            // console.log('userInfo._id' + userInfo._id);
+            // console.log(userInfo);
 
             var newArticle = {
                 title: vm.form.title,
@@ -20,7 +28,8 @@
                 body: vm.form.body,
                 tags: tags,
                 picture: vm.form.picture,
-                author: "articleCreateCtrl",
+                author: userInfo.name,
+                authorid: userInfo._id,
                 date: new Date()
             }
 
@@ -37,6 +46,5 @@
                     })
         }
     }
-
 
 })();

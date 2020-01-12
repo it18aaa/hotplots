@@ -85,6 +85,7 @@ module.exports.articleCreate = (req, res) => {
         tags: req.body.tags,
         picture: req.body.picture,
         author: req.body.author,
+        authorid: req.body.authorid,
         date: new Date()
     }, (err, article) => { // callback
         if (err) {
