@@ -46,11 +46,10 @@
         </div>
     </div>
 
-
     <div ngif="vm.article.comments.length > 0" class="border-top">
         <h4>Comments</h4>
         <div class="col-12">
-            <div ng-repeat="comment in vm.article.comments" class="mb-3 m-3 border-bottom">
+            <div ng-repeat="comment in vm.article.comments | orderBy : '-date' " class="mb-3 m-3 border-bottom">
                 <div article-comments comment="comment"></div>
             </div>
         </div>

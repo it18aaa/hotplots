@@ -16,15 +16,12 @@
 
         vm.commentFormSubmit = function () {
 
-            articles.comment(vm.article._id,
-                vm.user._id,
-                vm.user.name,
-                vm.comment)
+            articles.comment(vm.article._id, vm.user._id, vm.user.name, vm.comment)
                 .then(success => {
-                    console.log(success);
-                    // feedback, hide form/ refresh comments ? and go to new comment
+                    //console.log(success);                    
                     refreshView();
                     vm.commentFormShow = false;
+                    vm.comment = '';
                 },
                     reject => {
                         console.log(reject);
@@ -35,6 +32,8 @@
             articles.read($routeParams.articleid)
                 .then(
                     (result) => {
+                        console.log("READ-----------");
+                        console.log(result.data);
                         vm.article = result.data;
                     },
                     (error) => {
