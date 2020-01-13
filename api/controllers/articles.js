@@ -50,10 +50,9 @@ module.exports.articleList = (req, res) => {
         };
     };
 
-    //console.log(`req.params.sortorder ${req.params.sortorder}`);
     if (req.params.sortorder) {
         sortOrder = req.params.sortorder;
-        //console.log(`sort order is now ${sortOrder}`);
+
     }
 
     var query = Article.find(searchCriteria)
@@ -62,9 +61,7 @@ module.exports.articleList = (req, res) => {
         .limit(limit);
 
     query.exec((err, docs) => {
-        // shorten the body to a preview
-        // reducing the size of data sent
-        //
+
         docs.forEach((item, index) => {
             item.body = item.body.slice(0, summarySize);
         });
@@ -111,46 +108,41 @@ module.exports.articleLike = (req, res) => {
     articleid = req.body.articleid;
     userid = req.body.userid;
 
-    // if articleid and userid are okay
-    //   push the articleid onto the users articlelikes Array
-    //   and 
-    //   increment the article 'likes' counter
-    //   then send done message 
-    // else
-    //   send error message
-
     if (articleid && userid) {
-        User.findOne({ _id: userid }).exec((err, user) => {
-            if (!err) {
-                console.log(user);
-
-                //found  user, push articlid onto array
-                user.articlelikes.push(articleid);
-                user.save();
-
-                sendJsonResponse(res, 201, { "message": "record modified" });
-
-                // increment like counter in article
-                Article.findOne({ _id: articleid }).exec((err, article) => {
-                    if (!err) {
-                        //incremenet like counter
-                    } else {
-                        // complain  gracefully
-                    }
+        User.findById(userid)
+            .exec()
+            .then(user => {
+                if (!user.articlelikes.includes(articleid)) {
+                    user.articlelikes.push(articleid);
+                    return user.save();
+                } else {
+                    throw "user has already liked that article";
+                }
+            })
+            .then(success => {
+                return Article.findById(articleid).exec();
+            })
+            .then(article => {
+                article.likes++;
+                return article.save();
+            })
+            .then(success => {
+                sendJsonResponse(res, 201, {
+                    "message": "like added to user page;"
                 });
-
-            } else {
-                console.log(err);
-                sendJsonResponse(res, 400, { "message": "problem finding user" });
-            }
-        })
+            })
+            .catch(error => {
+                sendJsonResponse(res, 400, {
+                    "message": error
+                });
+                console.log(error);
+            })
     } else {
-        // send error message
-        sendJsonResponse(res, 400, { "message": "There was a problem" });
-    }
+        sendJsonResponse(res, 400, {
+            "message": "require both article id and user id"
+        });
+    };
 
-
-    //sendJsonResponse(res, 200, {"message":"going to do a like"});
 }
 
 module.exports.articleComment = (req, res) => {
@@ -158,7 +150,9 @@ module.exports.articleComment = (req, res) => {
     // if we have an articleid and a comment body, we're good to go
     if (req.params.articleid && req.body.body) {
 
-        filter = { _id: req.params.articleid };
+        filter = {
+            _id: req.params.articleid
+        };
 
         // construct the comment
         var comment = {
@@ -169,29 +163,34 @@ module.exports.articleComment = (req, res) => {
             likes: 0,
         };
 
-        console.log('adding comment:');
-        console.log(comment);
         // we want to push the comment onto the array
         update = {
-            $push:
-                { comments: comment }
+            $push: {
+                comments: comment
+            }
         };
 
         // return the new instance of the document
-        options = { new: true };
+        options = {
+            new: true
+        };
 
         Article.findOneAndUpdate(filter, update, options,
             (error, doc) => {
                 if (!error) {
                     //console.log(doc);
-                    sendJsonResponse(res, 200, { "message": "comment inserted" });
+                    sendJsonResponse(res, 200, {
+                        "message": "comment inserted"
+                    });
                 } else {
                     sendJsonResponse(res, 400, error);
                 }
             }
         );
     } else {
-        sendJsonResponse(res, 400, { "message": "article not found or comment too short" });
+        sendJsonResponse(res, 400, {
+            "message": "article not found or comment too short"
+        });
     }
 
 };

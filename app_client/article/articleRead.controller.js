@@ -14,6 +14,16 @@
             vm.commentFormShow = !vm.commentFormShow;
         }
 
+        vm.likeButtonPress = function() {
+            articles.like(vm.article._id, vm.user._id)
+                .then(success => {
+                    refreshView();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
         vm.commentFormSubmit = function () {
 
             articles.comment(vm.article._id, vm.user._id, vm.user.name, vm.comment)
@@ -32,8 +42,6 @@
             articles.read($routeParams.articleid)
                 .then(
                     (result) => {
-                        console.log("READ-----------");
-                        console.log(result.data);
                         vm.article = result.data;
                     },
                     (error) => {

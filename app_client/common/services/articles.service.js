@@ -9,7 +9,6 @@
             if (sortOrder === undefined) {
                 sortOrder = '-date';
             }
-
             return $http.get('/api/article/list/sort/' + sortOrder.trim());
         }
 
@@ -22,12 +21,8 @@
         }
 
         var create = function (article) {
-            console.log('doing create!');
-
             var url = '/api/article/create';
-
-            return $http.post(url, article);
-                
+            return $http.post(url, article);     
         }
 
         var comment = function(articleid, userid, name, comment) {
@@ -39,16 +34,25 @@
                 author: name,
                 authorid: userid
             };
-            console.log(data);
-            return $http.post(url, data);
 
+            return $http.post(url, data);
+        }
+
+        var like = function(articleid, userid) {
+            var url = '/api/article/like';
+            var data = {
+                articleid: articleid,
+                userid: userid
+            };
+            return $http.post(url, data);
         }
 
         return {
             getList: getList,
             read: read,
             create: create,
-            comment: comment
+            comment: comment,
+            like: like
         };
     }
 })();
