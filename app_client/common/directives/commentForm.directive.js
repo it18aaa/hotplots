@@ -3,16 +3,12 @@ angular
     .directive('commentForm', function () {
         return {
             restrict: 'AE',
-            scope: {
-                articleid: '=',
-                userid: '=',
-                name: '='
-            },
-            controller: 'articleCommentForm',
-            controllerAs: 'vm',
             templateUrl: '/common/partials/commentForm.partial.html',
             link: function(scope) {
-                console.log(scope)
+                // console.log('commentForm directive');
+                // console.log(scope.vm.article._id);
+                // console.log(scope.vm.user._id);
+                // console.log(scope.vm.user.name);
             }
         };
     });
