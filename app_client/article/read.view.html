@@ -1,47 +1,59 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-12">
             <h1 class="display-4">
                 {{ vm.article.title }}
-                <h6>
-                    <p>{{ vm.article.author }}</p>
-                    <p>{{ vm.article.likes }} Likes, 
-                    {{ vm.article.comments.length }} Comments</p>
-                    <p class="border-bottom">Tagged:
-                        <span ng-repeat="tag in vm.article.tags">
-                            {{ tag }}
-                        </span>
-                    </p>
-                </h6>
-
             </h1>
+
+            <p>{{ vm.article.author }}</p>
+            <p>{{ vm.article.likes }} Likes,
+                {{ vm.article.comments.length }} Comments</p>
+            <p class="border-bottom">Tagged:
+                <span ng-repeat="tag in vm.article.tags">
+                    {{ tag }}
+                </span>
+            </p>
+
         </div>
+    </div>
+    <div class="row">
         <div class="col-xs-12">
             <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
             <p class="articlebody text-wrap text-justify">{{ vm.article.body }}</p>
+
             <div class="row border-top">
                 <div class="col-6">
-                    <p>Share this article</p>                    
+                    <p>Share this article</p>
                 </div>
 
-                <div class="col-6 text-right">
+                <div ng-if="vm.user" class="col-6 text-right ">
                     <button class="btn btn-info">Like</button>
-                    <button class="btn btn-info">Comment</button>
+                    <button ng-click="vm.commentFormToggle()" class="btn btn-info">Comment</button>
                 </div>
             </div>
         </div>
     </div>
-    <div ngif="vm.article.comments.length > 0" class="border-top" >
+    <div class="row bg-light form-horizontal">
+        <div class="col-2">
+
+        </div>
+        <div class="col-8 m-2 class="bg-info">
+                <comment-form ng-if="vm.commentFormShow" 
+                              class="bg-danger"  
+                              articleid="vm.article._id" 
+                              userid="vm.user._id" 
+                              name="vm.user.name"></comment-form>
+        </div>
+    </div>
+
+
+    <div ngif="vm.article.comments.length > 0" class="border-top">
         <h4>Comments</h4>
         <div class="col-12">
             <div ng-repeat="comment in vm.article.comments" class="mb-3 m-3 border-bottom">
-                <div article-comment comment="comment"></div>
+                <div article-comments comment="comment"></div>
             </div>
         </div>
-
-
-
-        
     </div>
 
 </div>

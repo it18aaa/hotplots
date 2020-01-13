@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var readLine = require("readline");
+// sets mongoose to use mongodb's findOndAndUpdate
+mongoose.set('useFindAndModify', false);
 
 // pass on *nix signals for windows
 if (process.platform === "win32") {

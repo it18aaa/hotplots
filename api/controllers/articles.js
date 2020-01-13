@@ -114,10 +114,13 @@ module.exports.articleComment = (req, res) => {
         var comment = {
             body: req.body.body,
             author: req.body.author,
+            authorid: req.body.authorid,
             date: new Date(),
             likes: 0,
         };
 
+        console.log('adding comment:');
+        console.log(comment);
         // we want to push the comment onto the array
         update = {
             $push:
@@ -130,7 +133,7 @@ module.exports.articleComment = (req, res) => {
         Article.findOneAndUpdate(filter, update, options,
             (error, doc) => {
                 if (!error) {
-                    console.log(doc);
+                    //console.log(doc);
                     sendJsonResponse(res, 200, {"message":"comment inserted"});
                 } else {
                     sendJsonResponse(res, 400, error);
@@ -143,33 +146,33 @@ module.exports.articleComment = (req, res) => {
 
 };
 
-module.exports.articleCommentOld = (req, res) => {
-    console.log("going to try and create something!");
-    var id = req.params.articleid;
-    if (id) {
-        Article.findById(id)
-            .select('comments')
-            .exec((err, article) => {
-                if (!err) {
-                    //  we've found the article
-                    //console.log(article);
-                    //sendJsonResponse(res, 200, { "message": "Adding comment" });
-                    article.comments.push({
-                        title: req.body.title,
-                        body: req.body.body,
-                        author: req.body.author,
-                        date: req.body.date,
-                    });
-                    article.save()
+// module.exports.articleCommentOld = (req, res) => {
+//     console.log("going to try and create something!");
+//     var id = req.params.articleid;
+//     if (id) {
+//         Article.findById(id)
+//             .select('comments')
+//             .exec((err, article) => {
+//                 if (!err) {
+//                     //  we've found the article
+//                     //console.log(article);
+//                     //sendJsonResponse(res, 200, { "message": "Adding comment" });
+//                     article.comments.push({
+//                         title: req.body.title,
+//                         body: req.body.body,
+//                         author: req.body.author,
+//                         date: req.body.date,
+//                     });
+//                     article.save()
 
 
-                } else {
-                    sendJsonResponse(res, 400, err);
-                }
+//                 } else {
+//                     sendJsonResponse(res, 400, err);
+//                 }
 
-            });
-    } else {
-        sendJsonResponse(res, 404, { "message": "Article not found" })
-    }
-}
+//             });
+//     } else {
+//         sendJsonResponse(res, 404, { "message": "Article not found" })
+//     }
+// }
 

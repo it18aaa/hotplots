@@ -30,10 +30,25 @@
                 
         }
 
+        var comment = function(articleid, userid, name, comment) {
+
+            var url = '/api/article/' + articleid + '/comment';
+            var data = {
+                articleid: articleid,
+                body: comment,
+                author: name,
+                authorid: userid
+            };
+            console.log(data);
+            return $http.post(url, data);
+
+        }
+
         return {
             getList: getList,
             read: read,
-            create: create
+            create: create,
+            comment: comment
         };
     }
 })();
