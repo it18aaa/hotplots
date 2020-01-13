@@ -40,7 +40,6 @@
                 authorid: userid
             };
             console.log(data);
-
             return $http.post(url, data);
 
         }
