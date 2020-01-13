@@ -32,7 +32,7 @@
                     </div>
 
                     <div ng-if="vm.user" class="col-6 text-right ">
-                        <button class="btn btn-info">Like</button>
+                        <button class="btn btn-info" ng-click="vm.likeButtonPress()">Like</button>
                         <button ng-if="!vm.commentFormShow" ng-click="vm.commentFormToggle()"
                             class="btn btn-info">Comment</button>
                     </div>

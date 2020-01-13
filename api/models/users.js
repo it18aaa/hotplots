@@ -13,6 +13,9 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    articlelikes: {
+        type: [String],
+    },
     hash: String,
     salt: String
 });
