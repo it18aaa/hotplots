@@ -12,7 +12,7 @@ angular
             controllerAs: 'vm',
             templateUrl: '/common/partials/commentForm.partial.html',
             link: function(scope) {
-                console.log(scope);
+                console.log(scope)
             }
         };
     });
