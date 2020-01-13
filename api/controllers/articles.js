@@ -30,7 +30,7 @@ module.exports.articleList = (req, res) => {
     // set defaults     
     //   
     var searchCriteria = undefined;
-    var fields = "_id title likes author body date picture tags";
+    var fields = "_id title likes author body date picture tags comments._id";
     var sortOrder = "-date";
     var limit = 100;
     var summarySize = 150;
@@ -49,10 +49,10 @@ module.exports.articleList = (req, res) => {
         };
     };
 
-    console.log(`req.params.sortorder ${req.params.sortorder}`);
+    //console.log(`req.params.sortorder ${req.params.sortorder}`);
     if (req.params.sortorder) {
         sortOrder = req.params.sortorder;
-        console.log(`sort order is now ${sortOrder}`);
+        //console.log(`sort order is now ${sortOrder}`);
     }
 
     var query = Article.find(searchCriteria)
@@ -145,34 +145,3 @@ module.exports.articleComment = (req, res) => {
     }
 
 };
-
-// module.exports.articleCommentOld = (req, res) => {
-//     console.log("going to try and create something!");
-//     var id = req.params.articleid;
-//     if (id) {
-//         Article.findById(id)
-//             .select('comments')
-//             .exec((err, article) => {
-//                 if (!err) {
-//                     //  we've found the article
-//                     //console.log(article);
-//                     //sendJsonResponse(res, 200, { "message": "Adding comment" });
-//                     article.comments.push({
-//                         title: req.body.title,
-//                         body: req.body.body,
-//                         author: req.body.author,
-//                         date: req.body.date,
-//                     });
-//                     article.save()
-
-
-//                 } else {
-//                     sendJsonResponse(res, 400, err);
-//                 }
-
-//             });
-//     } else {
-//         sendJsonResponse(res, 404, { "message": "Article not found" })
-//     }
-// }
-
