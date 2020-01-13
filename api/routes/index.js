@@ -20,6 +20,7 @@ router.get('/article/list/sort/:sortorder/', ctrlArticle.articleList);
 router.get('/articles/read/:articleid', ctrlArticle.fetchById);
 router.post('/article/create', ctrlArticle.articleCreate);
 router.post('/article/:articleid/comment', ctrlArticle.articleComment);
+router.post('/article/like', ctrlArticle.articleLike);
 
 // authentication endpoints
 

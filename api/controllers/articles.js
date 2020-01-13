@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var Article = mongoose.model('Article');
+var User = mongoose.model('User');
 
 // utility function, send content and response in one line
 var sendJsonResponse = (res, status, content) => {
@@ -103,11 +104,60 @@ module.exports.articleCreate = (req, res) => {
     });
 }
 
+module.exports.articleLike = (req, res) => {
+
+    // TODO: Validation
+
+    articleid = req.body.articleid;
+    userid = req.body.userid;
+
+    // if articleid and userid are okay
+    //   push the articleid onto the users articlelikes Array
+    //   and 
+    //   increment the article 'likes' counter
+    //   then send done message 
+    // else
+    //   send error message
+
+    if (articleid && userid) {
+        User.findOne({ _id: userid }).exec((err, user) => {
+            if (!err) {
+                console.log(user);
+
+                //found  user, push articlid onto array
+                user.articlelikes.push(articleid);
+                user.save();
+
+                sendJsonResponse(res, 201, { "message": "record modified" });
+
+                // increment like counter in article
+                Article.findOne({ _id: articleid }).exec((err, article) => {
+                    if (!err) {
+                        //incremenet like counter
+                    } else {
+                        // complain  gracefully
+                    }
+                });
+
+            } else {
+                console.log(err);
+                sendJsonResponse(res, 400, { "message": "problem finding user" });
+            }
+        })
+    } else {
+        // send error message
+        sendJsonResponse(res, 400, { "message": "There was a problem" });
+    }
+
+
+    //sendJsonResponse(res, 200, {"message":"going to do a like"});
+}
+
 module.exports.articleComment = (req, res) => {
 
     // if we have an articleid and a comment body, we're good to go
     if (req.params.articleid && req.body.body) {
-        
+
         filter = { _id: req.params.articleid };
 
         // construct the comment
@@ -134,14 +184,14 @@ module.exports.articleComment = (req, res) => {
             (error, doc) => {
                 if (!error) {
                     //console.log(doc);
-                    sendJsonResponse(res, 200, {"message":"comment inserted"});
+                    sendJsonResponse(res, 200, { "message": "comment inserted" });
                 } else {
                     sendJsonResponse(res, 400, error);
                 }
             }
         );
     } else {
-        sendJsonResponse(res, 400, {"message": "article not found or comment too short"});
+        sendJsonResponse(res, 400, { "message": "article not found or comment too short" });
     }
 
 };
