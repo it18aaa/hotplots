@@ -16,7 +16,6 @@
         //
         articles.getList('-date')
             .then((res) => {
-
                 vm.articlesByDate = res.data.slice(0, 3);
             },
                 (e) => {

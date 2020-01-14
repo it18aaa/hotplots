@@ -61,3 +61,4 @@ process.on('SIGTERM', function () {
 // 
 require('./article');
 require('./users');
+require('./tag.js');
