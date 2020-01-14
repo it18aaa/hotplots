@@ -7,7 +7,7 @@
 
             <p>{{ vm.article.author }}</p>
             <p>{{ vm.article.likes }} Likes,
-                {{ vm.article.comments.length }} Comments</p>
+                {{ vm.article.comment_count }} Comments</p>
             <p class="border-bottom">Tagged:
                 <span ng-repeat="tag in vm.article.tags">
                     {{ tag }}
@@ -16,9 +16,7 @@
 
         </div>
     </div>
-
         
-    
     <div class="row">
         <div class="col-xs-12">
             <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
