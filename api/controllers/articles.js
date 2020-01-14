@@ -52,7 +52,6 @@ module.exports.articleList = (req, res) => {
 
     if (req.params.sortorder) {
         sortOrder = req.params.sortorder;
-
     }
 
     var query = Article.find(searchCriteria)
