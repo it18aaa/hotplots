@@ -31,7 +31,7 @@ module.exports.articleList = (req, res) => {
     // set defaults     
     //   
     var searchCriteria = undefined;
-    var fields = "_id title likes author body date picture tags comments._id";
+    var fields = "_id title likes comment_count author body date picture tags";
     var sortOrder = "-date";
     var limit = 100;
     var summarySize = 150;
@@ -142,7 +142,6 @@ module.exports.articleLike = (req, res) => {
             "message": "require both article id and user id"
         });
     };
-
 }
 
 module.exports.articleComment = (req, res) => {
@@ -167,7 +166,8 @@ module.exports.articleComment = (req, res) => {
         update = {
             $push: {
                 comments: comment
-            }
+            }, 
+            $inc: { comment_count: 1 }
         };
 
         // return the new instance of the document

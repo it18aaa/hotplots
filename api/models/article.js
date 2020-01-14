@@ -51,6 +51,11 @@ var articleSchema = new mongoose.Schema({
     tags: {
         type: [String], index: true 
     },
+    comment_count: {
+        type: Number,
+        default: 0,
+        required: true
+    },
     comments: [commentSchema]
 });
 
