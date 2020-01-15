@@ -15,13 +15,31 @@ var tagSchema = new mongoose.Schema({
     }
 });
 
+tagSchema.statics.untagArticle = async function (name, articleid) {
 
-tagSchema.statics.pushArticle = async function (name, articleid) {
+    var query = this.findOne({
+        name: name
+    })
+
+    await query.exec()
+        .then(existing => {
+            console.log(existing);
+            if(existing.articles.includes(articleid)) {
+                var i = existing.articles.indexOf(articleid);
+                existing.articles.splice(i, 1)
+                existing.article_count--;
+                return existing.save();
+            } else {
+                throw "article not tagged " + name;
+            }
+        });
+}
+
+tagSchema.statics.tagArticle = async function (name, articleid) {
 
     var query = this.findOne({
         name: name
     });
-
 
     await query.exec()
         .then(existing => {
@@ -45,9 +63,7 @@ tagSchema.statics.pushArticle = async function (name, articleid) {
         .catch(error => {
             throw error;
         });;
-
 }
-
 
 //compile schema
 mongoose.model("Tag", tagSchema);
