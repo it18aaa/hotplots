@@ -10,7 +10,7 @@ var sendJsonResponse = (res, status, content) => {
 
 module.exports.tagArticle = function (req, res) {
 
-    letname = req.body.tag.trim();
+    let name = req.body.tag.trim();
     let articleid = req.body.articleid;
 
     if (name && articleid) {
@@ -56,5 +56,13 @@ module.exports.untagArticle = function (req, res) {
         });
 
     }
+}
 
+module.exports.getTags = function (articleid) {
+
+    // business logic in model    
+    // Article.getTags(articleid);
+    sendJsonResponse(res, 400, {
+        "tags": ["not", "two"]
+    });
 }

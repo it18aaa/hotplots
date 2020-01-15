@@ -9,20 +9,18 @@
         vm.formSubmit = function () {
             // TODO: Validation
 
-            // 
-            var tags = vm.form.tags.split(",")
-                .map((tag) => {
-                    return tag.trim()
-                });
+            // old tagging implementation
+            // var tags = vm.form.tags.split(",")
+            //     .map((tag) => {
+            //         return tag.trim()
+            //     });
 
             let userInfo = user.getInfo();
-
 
             var newArticle = {
                 title: vm.form.title,
                 synopsis: vm.form.synopsis,
                 body: vm.form.body,
-                tags: tags,
                 picture: vm.form.picture,
                 author: userInfo.name,
                 authorid: userInfo._id,

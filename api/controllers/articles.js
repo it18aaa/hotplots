@@ -79,7 +79,6 @@ module.exports.articleCreate = (req, res) => {
         author: req.body.author,
         synopsis: req.body.synopsis,
         body: req.body.body,
-        tags: req.body.tags,
         picture: req.body.picture,
         author: req.body.author,
         authorid: req.body.authorid,
