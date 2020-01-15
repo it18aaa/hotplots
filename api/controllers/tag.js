@@ -8,15 +8,7 @@ var sendJsonResponse = (res, status, content) => {
     res.json(content);
 }
 
-// data required
-// articleid
-// tag
-// computed - article-count
-
-
 module.exports.tagArticle = function (req, res) {
-
-    // TODO: Validation?
 
     letname = req.body.tag.trim();
     let articleid = req.body.articleid;
@@ -64,35 +56,5 @@ module.exports.untagArticle = function (req, res) {
         });
 
     }
-
-
-    // Tag.findOne(filter)
-    //     .exec()
-    //     .then(tag => {
-    //         if (tag) {
-    //             if (tag.articles.includes(articleid)) {
-    //                 tag.articles.splice(tag.articles.indexOf(articleid), 1);
-    //                 tag.article_count--;
-    //                 tag.save()
-    //                     .then(
-    //                         succes => {
-    //                             sendJsonResponse(res, 200, {
-    //                                 "message": "Article untagged"
-    //                             });
-    //                         }, error => {
-    //                             throw error;
-    //                         })
-    //             } else {
-    //                 throw "Article is not tagged";
-    //             }
-    //         } else {
-    //             throw "Tag does not exist";
-    //         }
-    //     })
-    //     .catch(error => {
-    //         sendJsonResponse(res, 400, {
-    //             "message": error
-    //         });
-    //     });
 
 }
