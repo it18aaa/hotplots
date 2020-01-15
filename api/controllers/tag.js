@@ -20,47 +20,29 @@ module.exports.tagArticle = function (req, res) {
 
     name = req.body.tag.trim();
     articleid = req.body.articleid;
-    newTag = { name: name };
+    newTag = {
+        name: name
+    };
 
     // does tag exist,
     //    if so push articlid into artciles array
     // otherwise create tag    
 
     if (name && articleid) {
-        Tag.findOne(newTag)
-            .exec()
-            .then(existingTag => {
-                if (existingTag) {
-                    if (!existingTag.articles.includes(articleid)) {
-                        existingTag.articles.push(articleid);
-                        existingTag.article_count++;
-                        existingTag.save()
-                            .then(sucess => {
-                                sendJsonResponse(res, 200,
-                                    { "message": "Tag: updated" });
-                            });
-                    } else {
-                        throw "article already tagged";
-                    }
-                } else {
-                    newTag = new Tag({
-                        name: name,
-                        article_count: 1,
-                        articles: [articleid]
-                    });
-                    newTag.save()
-                        .then(success => {
-                            sendJsonResponse(res, 200,
-                                { "message": "Tag: " + name + " created" });
-                        });
-                }
+
+        Tag.pushArticle(name, articleid)
+            .then(success => {
+                sendJsonResponse(res, 200, {"message": "OK"});
             })
             .catch(error => {
-                sendJsonResponse(res, 400,
-                    { "message": error });
+                sendJsonResponse(res, 400, {
+                    "message": error
+                });
             });
     } else {
-        sendJsonResponse(res, 400, { "message": "API call invoked incorrectly" });
+        sendJsonResponse(res, 400, {
+            "message": "API call invoked incorrectly"
+        });
     }
 
     //    sendJsonResponse(res, 200, { "message": "endpoint test ok" });
@@ -74,7 +56,9 @@ module.exports.untagArticle = function (req, res) {
 
     name = req.body.tag.trim();
     articleid = req.body.articleid;
-    filter = { name: name };
+    filter = {
+        name: name
+    };
     if (name && articleid) {
         Tag.findOne(filter)
             .exec()
@@ -86,8 +70,9 @@ module.exports.untagArticle = function (req, res) {
                         tag.save()
                             .then(
                                 succes => {
-                                    sendJsonResponse(res, 200,
-                                        { "message": "Article untagged" });
+                                    sendJsonResponse(res, 200, {
+                                        "message": "Article untagged"
+                                    });
                                 }, error => {
                                     throw error;
                                 })
@@ -99,10 +84,13 @@ module.exports.untagArticle = function (req, res) {
                 }
             })
             .catch(error => {
-                sendJsonResponse(res, 400, { "message": error });
+                sendJsonResponse(res, 400, {
+                    "message": error
+                });
             });
     } else {
-        sendJsonResponse(res, 400, { "message": "API call not invoked incorrectly" });
+        sendJsonResponse(res, 400, {
+            "message": "API call not invoked incorrectly"
+        });
     }
 }
-
