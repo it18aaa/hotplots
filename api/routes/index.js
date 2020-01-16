@@ -27,7 +27,7 @@ router.post('/article/like', ctrlArticle.articleLike);
 
 router.post('/tag/add/article/', ctrlTag.tagArticle);
 router.post('/tag/remove/article', ctrlTag.untagArticle);
-router.post('/tag/get/article', ctrlTag.getTags);
+router.get('/tag/list/article/:articleid', ctrlTag.getTags);
 
 // authentication endpoints
 router.post('/register', ctrlAuth.register);

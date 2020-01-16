@@ -13,8 +13,8 @@
     <div class="row border">
         <div class="col-xs-6 col-sm-6">
             <p class="border-bottom">Tagged:
-                <span ng-repeat="tag in vm.article.tags">
-                    {{ tag }}
+                <span ng-repeat="tag in vm.tags">
+                    <a class=""" href='/tag/{{tag._id}}'>{{ tag.name }}</a>&nbsp;
                 </span>
             </p>
         </div>

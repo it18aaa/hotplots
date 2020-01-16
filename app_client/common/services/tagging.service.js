@@ -7,8 +7,7 @@
     function tagging($http) {
 
         var getTags = function (articleid) {
-            // return list of tags
-            // for the article read page, and various views
+            return $http.get('/api/tag/list/article/' + articleid);
         }
 
         var listArticles = function (tagname) {

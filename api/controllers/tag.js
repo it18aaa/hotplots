@@ -58,11 +58,18 @@ module.exports.untagArticle = function (req, res) {
     }
 }
 
-module.exports.getTags = function (articleid) {
+module.exports.getTags = function (req, res) {
 
-    // business logic in model    
-    // Article.getTags(articleid);
-    sendJsonResponse(res, 400, {
-        "tags": ["not", "two"]
-    });
+    articleid = req.params.articleid;
+    console.log("getting tags for " + articleid)
+    var query = Tag.find({articles: articleid})
+ //       .select('_id name')
+        .exec()
+        .then(tags => {
+            sendJsonResponse(res, 200, tags);
+        })
+        .catch(error => {
+            sendJsonResponse(res, 400, {"message":"there was an error"})
+        })
+
 }
