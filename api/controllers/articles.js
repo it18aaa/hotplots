@@ -26,6 +26,33 @@ module.exports.fetchById = (req, res) => {
         });
 }
 
+module.exports.update = (req, res) => {
+
+    articleid = req.params.articleid;
+    article = req.body;
+
+    Article.findById(articleid)
+        .then(existing => {
+            existing.title = article.title;
+            existing.body = article.body;
+            existing.synopsis = article.synopsis;
+            existing.picture = article.picture;
+            existing.modified = article.modified;
+            return existing.save();
+        })
+        .then(success => {
+            sendJsonResponse(res, 200, {
+                "message": "article modified"
+            });
+        })
+        .catch(error => {
+            sendJsonResponse(res, 400, {
+                "message": "unable to update"
+            });
+        })
+
+}
+
 module.exports.articleList = (req, res) => {
 
     // set defaults     
@@ -167,8 +194,10 @@ module.exports.articleComment = (req, res) => {
         update = {
             $push: {
                 comments: comment
-            }, 
-            $inc: { comment_count: 1 }
+            },
+            $inc: {
+                comment_count: 1
+            }
         };
 
         // return the new instance of the document
