@@ -4,7 +4,7 @@
         <p class="small">{{ comment.date | date:'dd/MM/yy hh:mm' }} </p>        
     </div>
     <div class="col-8">
-        <p ng-bind-html="comment.body | linebreaks"></p>
+        <p ng-bind-html="comment.body | linebreaks | smileys"></p>
     </div>
     <div class="col-1">
         <button class="btn btn-sm btn-info">Reply</button>
