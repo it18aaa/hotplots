@@ -10,9 +10,10 @@ var tagSchema = new mongoose.Schema({
         default: 0,
         required: true
     },
-    articles: {
-        type: [String]
-    }
+    articles: [{
+        type: String,
+        ref: 'Article'
+    }]
 });
 
 tagSchema.statics.untagArticle = async function (name, articleid) {

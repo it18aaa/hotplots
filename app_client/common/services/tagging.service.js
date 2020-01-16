@@ -6,13 +6,16 @@
 
     function tagging($http) {
 
+
         var getTags = function (articleid) {
             return $http.get('/api/tag/list/article/' + articleid);
         }
 
-        var listArticles = function (tagname) {
+        var listArticlesById = function (tagid) {
             // return a list of articles 
             // for a particular tag
+
+            return $http.get('/api/article/list/tag/' + tagid);
         }
 
         var tag = function (articleid, tag) {
@@ -37,7 +40,7 @@
         return {
             untag: untag,
             tag: tag,
-            listArticles: listArticles,
+            listArticlesById: listArticlesById,
             getTags: getTags
         }
 

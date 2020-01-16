@@ -56,7 +56,10 @@ var articleSchema = new mongoose.Schema({
         default: 0,
         required: true
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
+    synopsis: {
+        type: String
+    }
 });
 
 // compile schema

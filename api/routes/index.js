@@ -12,10 +12,14 @@ var ctrlAuth = require('../controllers/authentication');
 var ctrlTag = require('../controllers/tag');
 
 // map controllers to api routes
-router.get('/article/list', ctrlArticle.articleList);
-router.get('/article/list/tag/:tagfilter/', ctrlArticle.articleList);
+
+
+router.get('/article/list/tag/:tagid/', ctrlTag.getTaggedArticles);
+router.get('/article/list/tag/:tagid/sort/:order', ctrlTag.getTaggedArticles);
+
 router.get('/article/list/author/:author/', ctrlArticle.articleList);
 router.get('/article/list/sort/:sortorder/', ctrlArticle.articleList);
+router.get('/article/list', ctrlArticle.articleList);
 
 // some basic article api functions
 router.get('/articles/read/:articleid', ctrlArticle.fetchById);
@@ -28,6 +32,7 @@ router.post('/article/like', ctrlArticle.articleLike);
 router.post('/tag/add/article/', ctrlTag.tagArticle);
 router.post('/tag/remove/article', ctrlTag.untagArticle);
 router.get('/tag/list/article/:articleid', ctrlTag.getTags);
+
 
 // authentication endpoints
 router.post('/register', ctrlAuth.register);

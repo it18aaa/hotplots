@@ -31,7 +31,7 @@ module.exports.articleList = (req, res) => {
     // set defaults     
     //   
     var searchCriteria = undefined;
-    var fields = "_id title likes comment_count author body date picture tags";
+    var fields = "_id title likes comment_count author body date picture";
     var sortOrder = "-date";
     var limit = 100;
     var summarySize = 150;
@@ -43,6 +43,9 @@ module.exports.articleList = (req, res) => {
         searchCriteria = {
             'tags': tag
         };
+
+
+
     } else if (req.params.author) {
         var author = req.params.author;
         searchCriteria = {
