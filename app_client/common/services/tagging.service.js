@@ -16,17 +16,17 @@
         }
 
         var tag = function (articleid, tag) {
-            console.log("trying to tag " + articleid + " with '" + tag);
+            
             var data = {
                 articleid: articleid,
-                tag: tag
+                tag: tag.toLowerCase()
             };
             return $http.post("/api/tag/add/article", data)
                 .then(success => {
-                    console.log("did it work?")
+                    console.log("tagged")
                 })
                 .catch(error => {
-                    console.log("it didn't work!")
+                    console.log("already tagged")
                 });
         }
 
