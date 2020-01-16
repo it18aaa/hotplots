@@ -8,21 +8,26 @@
             <p>{{ vm.article.author }}</p>
             <p>{{ vm.article.likes }} Likes,
                 {{ vm.article.comment_count }} Comments</p>
-            <span>
+
+                <span>
                 Tags:
 
-                    <span ng-repeat="tag in vm.tags" class="m-1 btn btn-sm btn border border-info">
-                        &nbsp;<a href='/article/tag/{{tag._id}}'>{{ tag.name }}</a>&nbsp;
-                    </span>
+                <span ng-repeat="tag in vm.tags" class="m-1 btn btn-sm btn border border-info">
+                    &nbsp;<a href='/article/tag/{{ tag._id }}'>{{ tag.name }}</a>&nbsp;
+                </span>
 
-                    <span ng-if="!vm.taggingFormShow" ng-click="vm.taggingFormToggle()" class="m-1 btn btn-sm btn border border-info">
-                        +
-                    </span>
-                    <span ng-if="vm.taggingFormShow" ng-click="vm.taggingFormToggle()" class="m-1 btn btn-sm btn border border-info">
-                        -
-                    </span>
-                
+                <span ng-if="!vm.taggingFormShow" ng-click="vm.taggingFormToggle()"
+                    class="m-1 btn btn-sm btn border border-info">
+                    +
+                </span>
+                <span ng-if="vm.taggingFormShow" ng-click="vm.taggingFormToggle()"
+                    class="m-1 btn btn-sm btn border border-info">
+                    -
+                </span>
+
                 <span tagging-form ng-if="vm.taggingFormShow"> </span>
+
+                
         </div>
     </div>
     <div class="col-xs-6 col-6">
@@ -31,24 +36,29 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-12" >
+    <div class="col-xs-12">
         <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
         <p class="articlebody text-wrap text-justify">
             <p ng-bind-html="vm.article.body|linebreaks"></p>
 
-        <p>Article written by {{vm.article.author}}</p>
+            <p>Article written by {{vm.article.author}}</p>
 
-        <div class="row border-top">
-            <div class="col-6">
-                <p>Share this article</p>
-            </div>
+            <div class="row border-top">
+                <div class="col-6">
+                    <p>Share this article</p>
+                </div>
 
-            <div ng-if="vm.user" class="col-6 text-right ">
-                <button class="btn btn-info" ng-click="vm.likeButtonPress()">Like</button>
-                <button ng-if="!vm.commentFormShow" ng-click="vm.commentFormToggle()"
-                    class="btn btn-info">Comment</button>
+                <div ng-if="vm.user" class="col-6 text-right ">
+                   <span ng-if="vm.user.id=vm.article.authorid"
+                            class="btn btn-danger border" class="float-right">
+                        <a href="/article/update/{{ vm.article._id }}">Update</a>
+                    </span>
+
+                    <button class="btn btn-info" ng-click="vm.likeButtonPress()">Like</button>
+                    <button ng-if="!vm.commentFormShow" ng-click="vm.commentFormToggle()"
+                        class="btn btn-info">Comment</button>
+                </div>
             </div>
-        </div>
     </div>
 </div>
 </div>

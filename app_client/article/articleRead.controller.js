@@ -1,10 +1,9 @@
 (function () {
-
     angular.module('hotplots')
         .controller('articleReadCtrl', [
             '$scope',
             'articles',
-            'tagging',            
+            'tagging',
             '$routeParams',
             'user',
             articleReadCtrl
@@ -24,7 +23,7 @@
         vm.commentFormToggle = function () {
             vm.commentFormShow = !vm.commentFormShow;
         }
-        vm.taggingFormToggle = function() {
+        vm.taggingFormToggle = function () {
             vm.taggingFormShow = !vm.taggingFormShow;
         }
 
@@ -42,7 +41,7 @@
             tagging.tag(vm.article._id, vm.tag)
                 .then(success => {
                     vm.taggingFormShow = false;
-                    refreshTags()                    
+                    refreshTags()
                 }).catch(error => {
                     console.log("failed to tag item")
                 });
@@ -51,10 +50,10 @@
         vm.commentFormSubmit = function () {
             articles.comment(vm.article._id, vm.user._id, vm.user.name, vm.comment)
                 .then(success => {
-                    refreshView();
-                    vm.commentFormShow = false;
-                    vm.comment = '';
-                },
+                        refreshView();
+                        vm.commentFormShow = false;
+                        vm.comment = '';
+                    },
                     reject => {
                         console.log(reject);
                     });
@@ -75,12 +74,10 @@
         }
 
         function refreshTags() {
-
             return tagging.getTags(vm.article._id)
                 .then(success => {
                     vm.tags = success.data;
                 });
         }
-
     }
 })();
