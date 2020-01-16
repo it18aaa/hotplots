@@ -9,6 +9,7 @@ var auth = jwt({
 
 var ctrlArticle = require('../controllers/articles');
 var ctrlAuth = require('../controllers/authentication');
+var ctrlTag = require('../controllers/tag');
 
 // map controllers to api routes
 router.get('/article/list', ctrlArticle.articleList);
@@ -22,8 +23,13 @@ router.post('/article/create', ctrlArticle.articleCreate);
 router.post('/article/:articleid/comment', ctrlArticle.articleComment);
 router.post('/article/like', ctrlArticle.articleLike);
 
-// authentication endpoints
+// tagging endpoints
 
+router.post('/tag/add/article/', ctrlTag.tagArticle);
+router.post('/tag/remove/article', ctrlTag.untagArticle);
+router.get('/tag/list/article/:articleid', ctrlTag.getTags);
+
+// authentication endpoints
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
