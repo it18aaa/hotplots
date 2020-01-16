@@ -9,11 +9,6 @@
         vm.formSubmit = function () {
             // TODO: Validation
 
-            // old tagging implementation
-            // var tags = vm.form.tags.split(",")
-            //     .map((tag) => {
-            //         return tag.trim()
-            //     });
 
             let userInfo = user.getInfo();
 

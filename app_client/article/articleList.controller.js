@@ -5,6 +5,7 @@
 
     function articleListCtrl($scope, articles, $routeParams) {
         var vm = this;
+        vm.title = "Articles";
 
         articles.getList($routeParams.sort)
             .then(

@@ -12,10 +12,8 @@
                 Tags:
 
                     <span ng-repeat="tag in vm.tags" class="m-1 btn btn-sm btn border border-info">
-                        &nbsp;<a href='/tag/{{tag._id}}'>{{ tag.name }}</a>&nbsp;
+                        &nbsp;<a href='/article/tag/{{tag._id}}'>{{ tag.name }}</a>&nbsp;
                     </span>
-
-
 
                     <span ng-if="!vm.taggingFormShow" ng-click="vm.taggingFormToggle()" class="m-1 btn btn-sm btn border border-info">
                         +
@@ -33,7 +31,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12" >
         <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
         <p class="articlebody text-wrap text-justify">{{ vm.article.body }}</p>
 

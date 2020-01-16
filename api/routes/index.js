@@ -15,6 +15,8 @@ var ctrlTag = require('../controllers/tag');
 
 
 router.get('/article/list/tag/:tagid/', ctrlTag.getTaggedArticles);
+router.get('/article/list/tag/:tagid/sort/:order', ctrlTag.getTaggedArticles);
+
 router.get('/article/list/author/:author/', ctrlArticle.articleList);
 router.get('/article/list/sort/:sortorder/', ctrlArticle.articleList);
 router.get('/article/list', ctrlArticle.articleList);
