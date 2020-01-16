@@ -24,6 +24,9 @@
         vm.commentFormToggle = function () {
             vm.commentFormShow = !vm.commentFormShow;
         }
+        vm.taggingFormToggle = function() {
+            vm.taggingFormShow = !vm.taggingFormShow;
+        }
 
         vm.likeButtonPress = function () {
             articles.like(vm.article._id, vm.user._id)
@@ -38,7 +41,8 @@
         vm.taggingFormSubmit = function () {
             tagging.tag(vm.article._id, vm.tag)
                 .then(success => {
-                    refreshView();
+                    vm.taggingFormShow = false;
+                    refreshTags()                    
                 }).catch(error => {
                     console.log("failed to tag item")
                 });
@@ -47,10 +51,10 @@
         vm.commentFormSubmit = function () {
             articles.comment(vm.article._id, vm.user._id, vm.user.name, vm.comment)
                 .then(success => {
-                        refreshView();
-                        vm.commentFormShow = false;
-                        vm.comment = '';
-                    },
+                    refreshView();
+                    vm.commentFormShow = false;
+                    vm.comment = '';
+                },
                     reject => {
                         console.log(reject);
                     });
