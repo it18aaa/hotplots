@@ -71,5 +71,20 @@ module.exports.getTags = function (req, res) {
         .catch(error => {
             sendJsonResponse(res, 400, {"message":"there was an error"})
         })
+}
 
+module.exports.getTaggedArticles = function( req, res) {
+    tagid = req.params.tagid;     
+       
+    //TODO: Validation
+    Tag.findById(tagid)
+        .populate("articles")
+        .exec()
+        .then(list => {
+            sendJsonResponse(res, 200, list.articles);        
+        })
+        .catch(error => {
+            sendJsonResponse(res, 400, error);        
+        })
+        
 }
