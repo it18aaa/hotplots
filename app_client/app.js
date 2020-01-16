@@ -1,4 +1,4 @@
-angular.module('hotplots', ['ngRoute']);
+angular.module('hotplots', ['ngRoute', 'ngSanitize']);
 
 function config($routeProvider, $locationProvider) {
     $routeProvider

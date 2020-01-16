@@ -4,7 +4,7 @@
         .controller('articleReadCtrl', [
             '$scope',
             'articles',
-            'tagging',
+            'tagging',            
             '$routeParams',
             'user',
             articleReadCtrl
