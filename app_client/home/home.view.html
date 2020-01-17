@@ -36,7 +36,7 @@
             <div class="col-12">
                 <h6 class="">Latest Articles</h6>
                 <div class="row bg-light">
-                    <div ng-repeat="a in vm.articlesByDate" class="col-md-4">
+                    <div ng-repeat="a in vm.articlesNewest" class="col-md-4">
                         <div article-card article="a"></div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
             <div class="col-12">
                 <h6 class="">Popular articles</h6>
                 <div class="row bg-light p-2">
-                    <div ng-repeat="a in vm.articlesByLikes" class="col-md-4">
+                    <div ng-repeat="a in vm.articlesPopular" class="col-md-4">
                         <div article-card article="a"></div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
             <div class="col-12">
                 <h6 class="border-bottom">Most Active articles</h6>
                 <div class="row p-2 bg-light">
-                    <div ng-repeat="a in vm.articlesByLikes" class="col-md-4">
+                    <div ng-repeat="a in vm.articlesActive" class="col-md-4">
                         <div article-card article="a"></div>
                     </div>
                 </div>

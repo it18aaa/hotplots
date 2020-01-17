@@ -12,7 +12,7 @@
         var vm = this;
         vm.title = "Hot Plots!"
 
-        
+
         tagging.getTagCloud('count')
             .then(tags => {
                 vm.popularTags = tags.data;
@@ -24,10 +24,10 @@
         // fetch articles by date, 
         // set view model data to first 3
         //
-        articles.getList('-date')
+        articles.getList('newest')
             .then((res) => {
-                vm.articlesByDate = res.data.slice(0, 3);
-            },
+                    vm.articlesNewest = res.data.slice(0, 3);
+                },
                 (e) => {
                     console.log(e);
                 }
@@ -36,10 +36,19 @@
         // fetch articles by likes, 
         // and set view model data to first 3
         //
-        articles.getList('-likes')
+        articles.getList('popular')
             .then((res) => {
-                vm.articlesByLikes = res.data.slice(0, 3);
-            },
+                    vm.articlesPopular = res.data.slice(0, 3);
+                },
+                (e) => {
+                    console.log(e)
+                }
+            );
+
+        articles.getList('active')
+            .then((res) => {
+                    vm.articlesActive = res.data.slice(0, 3);
+                },
                 (e) => {
                     console.log(e)
                 }

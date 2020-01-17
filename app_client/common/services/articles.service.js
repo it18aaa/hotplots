@@ -7,7 +7,7 @@
 
         var getList = function (sortOrder) {
             if (sortOrder === undefined) {
-                sortOrder = '-date';
+                sortOrder = 'newest';
             }
             return $http.get('/api/article/list/sort/' + sortOrder.trim());
         }
