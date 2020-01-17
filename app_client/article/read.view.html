@@ -4,6 +4,7 @@
             <h1 class="display-4">
                 {{ vm.article.title }}
             </h1>
+            <p class="lead font-italic">{{ vm.article.synopsis }}</p>
 
             <p>{{ vm.article.author }}</p>
             <p>{{ vm.article.likes }} Likes,
@@ -38,6 +39,7 @@
 <div class="row">
     <div class="col-xs-12">
         <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
+        
         <p class="articlebody text-wrap text-justify">
             <p ng-bind-html="vm.article.body|linebreaks"></p>
 
