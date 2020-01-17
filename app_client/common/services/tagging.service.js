@@ -3,9 +3,11 @@
         .module('hotplots')
         .service('tagging', ['$http', tagging]);
 
-
     function tagging($http) {
 
+        var getTagCloud = function (order) {
+            return $http.get('/api/tag/cloud/sort/' + order)
+        }
 
         var getTags = function (articleid) {
             return $http.get('/api/tag/list/article/' + articleid);
@@ -19,7 +21,7 @@
         }
 
         var tag = function (articleid, tag) {
-            
+
             var data = {
                 articleid: articleid,
                 tag: tag.toLowerCase()
@@ -41,7 +43,8 @@
             untag: untag,
             tag: tag,
             listArticlesById: listArticlesById,
-            getTags: getTags
+            getTags: getTags,
+            getTagCloud: getTagCloud
         }
 
     }

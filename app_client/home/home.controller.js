@@ -2,14 +2,24 @@
 
     angular
         .module('hotplots')
-        .controller('homeCtrl', ['$scope', 'articles', homeCtrl]);
+        .controller('homeCtrl', ['$scope', 'articles', 'tagging', homeCtrl]);
 
     // inject the articles service
-    function homeCtrl($scope, articles) {
+    function homeCtrl($scope, articles, tagging) {
 
         // vm use vm instead of $scope
         // vm = view model
         var vm = this;
+        vm.title = "Hot Plots!"
+
+        
+        tagging.getTagCloud('count')
+            .then(tags => {
+                vm.popularTags = tags.data;
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
         // fetch articles by date, 
         // set view model data to first 3

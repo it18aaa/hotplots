@@ -1,49 +1,58 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12 col-sm-12">
-            <h1 class="display-4">
-                {{ vm.article.title }}
-            </h1>
-            <p class="lead font-italic">{{ vm.article.synopsis }}</p>
+        <div class="col-md-2"></div>
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <div class="row">
 
-            <p>{{ vm.article.author }}</p>
-            <p>{{ vm.article.likes }} Likes,
-                {{ vm.article.comment_count }} Comments</p>
+                <div class="col">
+                    <h1 class="display-4">
+                        {{ vm.article.title }}
+                    </h1>
+                </div>
+            </div>
 
-                <span>
-                Tags:
+            <div class="row">
+                <div class="col">
+                    <p class="lead font-italic">{{ vm.article.synopsis }}</p>
 
-                <span ng-repeat="tag in vm.tags" class="m-1 btn btn-sm btn border border-info">
-                    &nbsp;<a href='/article/tag/{{ tag._id }}'>{{ tag.name }}</a>&nbsp;
-                </span>
+                    <p>{{ vm.article.author }}</p>
+                    <p>{{ vm.article.likes }} Likes,
+                        {{ vm.article.comment_count }} Comments</p>
+                </div>
+            </div>
 
-                <span ng-if="!vm.taggingFormShow && vm.user" ng-click="vm.taggingFormToggle()"
-                    class="m-1 btn btn-sm btn border border-info">
-                    +
-                </span>
-                <span ng-if="vm.taggingFormShow" ng-click="vm.taggingFormToggle()"
-                    class="m-1 btn btn-sm btn border border-info">
-                    -
-                </span>
+            <div class="row">
+                <div class="col">
 
-                <span tagging-form ng-if="vm.taggingFormShow"> </span>
 
-                
-        </div>
-    </div>
-    <div class="col-xs-6 col-6">
+                    Tags:
 
-    </div>
-</div>
+                    <span ng-repeat="tag in vm.tags" class="m-1 btn btn-sm btn border border-info">
+                        &nbsp;<a href='/article/tag/{{ tag._id }}'>{{ tag.name }}</a>&nbsp;
+                    </span>
 
-<div class="row">
-    <div class="col-xs-12">
-        <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
-        
-        <p class="articlebody text-wrap text-justify">
-            <p ng-bind-html="vm.article.body|linebreaks"></p>
+                    <span ng-if="!vm.taggingFormShow && vm.user" ng-click="vm.taggingFormToggle()"
+                        class="m-1 btn btn-sm btn border border-info">
+                        +
+                    </span>
+                    <span ng-if="vm.taggingFormShow" ng-click="vm.taggingFormToggle()"
+                        class="m-1 btn btn-sm btn border border-info">
+                        -
+                    </span>
 
-            <p>Article written by {{vm.article.author}}</p>
+                    <span tagging-form ng-if="vm.taggingFormShow"> </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+
+                    <img src="/img/{{ vm.article.picture}}" alt="" width=50% class="float-left mr-4 mb-4">
+
+                    <p class="articlebody text-wrap text-justify" ng-bind-html="vm.article.body|linebreaks"></p>
+
+                    <p>Article written by {{vm.article.author}}</p>
+                </div>
+            </div>
 
             <div class="row border-top">
                 <div class="col-6">
@@ -51,8 +60,7 @@
                 </div>
 
                 <div ng-if="vm.user" class="col-6 text-right ">
-                   <span ng-if="vm.user.id=vm.article.authorid"
-                            class="btn btn-danger border" class="float-right">
+                    <span ng-if="vm.user.id=vm.article.authorid" class="btn btn-danger border" class="float-right">
                         <a href="/article/update/{{ vm.article._id }}">Update</a>
                     </span>
 
@@ -61,27 +69,34 @@
                         class="btn btn-info">Comment</button>
                 </div>
             </div>
-    </div>
-</div>
-</div>
 
-<div class="row bg-light form-horizontal" id="comments-section">
-    <div class="col-2">
+            <div class="row">
+                <div class="col">
+                    <div class="row bg-light form-horizontal" id="comments-section">
+                        <div class="col-md-12">
+                            <comment-form ng-if="vm.commentFormShow" class="bg-danger" articleid="vm.article._id"
+                                userid="vm.user._id" name="vm.user.name"></comment-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-    <div class="col-8 m-2" >
-        <comment-form ng-if="vm.commentFormShow" class="bg-danger" articleid="vm.article._id" userid="vm.user._id"
-            name="vm.user.name"></comment-form>
-    </div>
-</div>
 
-<div ng-if="vm.article.comments.length > 0" class="border-top">
-    <h4>Comments</h4>
-    <div class="col-10">
-        <div ng-repeat="comment in vm.article.comments | orderBy : '-date' " class="mb-3 m-3 border-bottom">
-            <div article-comments comment="comment"></div>
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div ng-if="vm.article.comments.length > 0" class="border-top">
+                        <h4>Comments</h4>
+                        <div class="col-10">
+                            <div ng-repeat="comment in vm.article.comments | orderBy : '-date' "
+                                class="mb-3 m-3 border-bottom">
+                                <div article-comments comment="comment"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
 </div>

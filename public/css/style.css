@@ -35,8 +35,9 @@ a {
 }
 
 .center-cropped {
-    /*width: 120px;*/
-    height: 70px;
+   /* width: 120px;*/
+    height: 120px;
+    
     background-position: center center;
     background-repeat: no-repeat;
   }
