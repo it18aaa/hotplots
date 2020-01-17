@@ -58,7 +58,7 @@ module.exports.articleList = (req, res) => {
     // set defaults     
     //   
     var searchCriteria = undefined;
-    var fields = "_id title likes comment_count author body date picture";
+    var fields = "_id title likes comment_count author body date picture synopsis modified";
     var sortOrder = "-date";
     var limit = 100;
     var summarySize = 150;

@@ -1,8 +1,8 @@
 <h1 class="display-4">{{ vm.title }}</h1>
 <h3>{{ vm.subtitle }}</h3>
 
-<div ng-repeat="a in vm.articles" class="row">
-    <div class="col-md-5">
-        <div article-list-card article="a"></div>
-    </div>
+<div class="lead">{{ vm.articles.length}} articles</div>
+
+<div class="row">
+        <div ng-repeat="a in vm.articles"  class="col-md-3 p-2" article-list-card article="a"></div>
 </div>

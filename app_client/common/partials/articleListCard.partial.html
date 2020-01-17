@@ -1,31 +1,23 @@
-<div class="row border-top border-bottom" >
-    <div class="col-md-8">
+<div class="border p-2">
+
+    <div class="center-cropped mb-2" style="background-image: url('/img/{{ article.picture }}');">
+    </div>
+    <div>
         <a href="/article/read/{{ article._id }}">
             <h6>{{article.title}}</h6>
         </a>
     </div>
-    <div class="col-md-4 text-right">
-        {{ article.date | date:'dd MMMM yyyy'}}<br />
-        {{ article.author }}
+    <div class="border-bottom mb-2 pb-2">
+        <small>{{ article.synopsis }}</small>
     </div>
-</div>
+    <div>
+    <small> {{ article.author }} -
 
-<div class="row">
-    <div class="col-md-12">
-        <img ng-src="/img/{{ article.picture }}" class="w-25 mr-1 float-left" />
-        <small class="text-wrap">
-            {{ article.synopsis }}            
-        </small>
+        {{ article.date | date:'dd MMMM yyyy'}}</small>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-md-6">
-        {{ article.likes }} likes
-    </div>
-    <div class="col-md-6">
-        
-        {{ article.comment_count }} comments<br />
-        
-    </div>
+    <img src='/img/like.png' alt='like'> {{ article.likes }}
+
+    <img src='/img/comment.png' alt='comments'> {{ article.comment_count }}
+
 </div>
