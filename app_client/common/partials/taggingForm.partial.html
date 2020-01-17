@@ -4,6 +4,6 @@
         <input ng-model="vm.tag" type="text" id="text" class="form-control inputsm">
     </div>
     <div class="form-group col-2">
-        <input type="submit" class="btn btn-sm btn-info" ng-click="vm.taggingFormSubmit()" value="Add tag">
+        <input ng-if="vm.user" type="submit" class="btn btn-sm btn-info" ng-click="vm.taggingFormSubmit()" value="Add tag">
     </div>
 </form>

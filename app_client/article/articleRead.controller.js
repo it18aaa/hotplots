@@ -6,10 +6,12 @@
             'tagging',
             '$routeParams',
             'user',
+            '$location',
+            '$anchorScroll',
             articleReadCtrl
         ]);
 
-    function articleReadCtrl($scope, articles, tagging, $routeParams, user) {
+    function articleReadCtrl($scope, articles, tagging, $routeParams, user, $location, $anchorScroll) {
         var vm = this;
 
         vm.commentFormShow = false;
@@ -57,6 +59,12 @@
                     reject => {
                         console.log(reject);
                     });
+        }
+
+        vm.commentReply = function (comment) {
+            vm.commentFormShow = true;
+            vm.comment = "[Quote]" + comment.author + ":\n" + comment.body + "[/Quote]\n\n";
+            // TODO: $location.hash() & $anchorScroll
         }
 
         function refreshView() {
