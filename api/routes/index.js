@@ -34,6 +34,9 @@ router.post('/tag/add/article/', ctrlTag.tagArticle);
 router.post('/tag/remove/article', ctrlTag.untagArticle);
 router.get('/tag/list/article/:articleid', ctrlTag.getTags);
 
+// order is either name or count
+router.get('/tag/cloud/sort/:order', ctrlTag.getTagCloud);
+
 
 // authentication endpoints
 router.post('/register', ctrlAuth.register);

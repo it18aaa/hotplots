@@ -62,14 +62,47 @@ module.exports.getTags = function (req, res) {
 
     articleid = req.params.articleid;
     console.log("getting tags for " + articleid)
-    var query = Tag.find({ articles: articleid })
+    var query = Tag.find({
+            articles: articleid
+        })
         //       .select('_id name')
         .exec()
         .then(tags => {
             sendJsonResponse(res, 200, tags);
         })
         .catch(error => {
-            sendJsonResponse(res, 400, { "message": "there was an error" })
+            sendJsonResponse(res, 400, {
+                "message": "there was an error"
+            })
+        })
+}
+
+module.exports.getTagCloud = function (req, res) {
+
+    var order;
+    if (req.params.order == 'name') {
+        order = {
+            name: 1
+        };
+    } else if (req.params.order == 'count') {
+        order = {
+            article_count: -1
+        };
+    } else {
+        sendJsonResponse(res, 400, {
+            "message":
+            "API invoked incorrectly "
+        });
+    }
+    Tag.find({})
+        .select('_id name article_count')
+        .sort(order)
+        .exec()
+        .then(tagcloud => {
+            sendJsonResponse(res, 200, tagcloud);
+        })
+        .catch(error => {
+            sendJsonResponse(res, 400, error);
         })
 }
 
@@ -81,10 +114,13 @@ module.exports.getTaggedArticles = function (req, res) {
     //TODO: Validation
     Tag.findById(tagid)
         .populate('articles',
-            '_id title synopsis comment_count likes author authorid date picture', 
-            null,
-            { sort: { date: -1 } }
-            )
+            '_id title synopsis comment_count likes author authorid date picture',
+            null, {
+                sort: {
+                    date: -1
+                }
+            }
+        )
         .exec()
         .then(list => {
             sendJsonResponse(res, 200, list);
