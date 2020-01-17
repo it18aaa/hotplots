@@ -3,9 +3,10 @@ angular
     .directive('articleComments', function () {
         return {
             restrict: 'AE',
-            scope: {
-                comment: '='
-            },
+            // scope: {
+            //     comment: '='
+            // },
             templateUrl: '/common/partials/articleComments.partial.html'
-        };
+        }
+
     });

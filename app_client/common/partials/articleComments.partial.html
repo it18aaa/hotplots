@@ -4,9 +4,9 @@
         <p class="small">{{ comment.date | date:'dd/MM/yy hh:mm' }} </p>        
     </div>
     <div class="col-8">
-        <p ng-bind-html="comment.body | linebreaks | smileys"></p>
+        <p id="comment_{{comment._id}}" ng-bind-html="comment.body | linebreaks | smileys | quoting"></p>
     </div>
     <div class="col-1">
-        <button class="btn btn-sm btn-info">Reply</button>
+        <button ng-if="vm.user" class="btn btn-sm btn-info" ng-click="vm.commentReply(comment)">Reply</button>
     </div>
 </div>
