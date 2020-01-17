@@ -59,6 +59,9 @@ var articleSchema = new mongoose.Schema({
     comments: [commentSchema],
     synopsis: {
         type: String
+    },
+    modified: {
+        type: Date
     }
 });
 

@@ -5,7 +5,7 @@
 
     function articleCreateCtrl($scope, articles, $routeParams, user) {
         var vm = this;
-
+        vm.title = "Create a new article";
         vm.formSubmit = function () {
             // TODO: Validation
 

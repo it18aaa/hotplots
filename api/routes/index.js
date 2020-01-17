@@ -24,6 +24,7 @@ router.get('/article/list', ctrlArticle.articleList);
 // some basic article api functions
 router.get('/articles/read/:articleid', ctrlArticle.fetchById);
 router.post('/article/create', ctrlArticle.articleCreate);
+router.put('/article/update/:articleid', ctrlArticle.update);
 router.post('/article/:articleid/comment', ctrlArticle.articleComment);
 router.post('/article/like', ctrlArticle.articleLike);
 

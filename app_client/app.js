@@ -27,6 +27,11 @@ function config($routeProvider, $locationProvider) {
             controller: 'articleCreateCtrl',
             controllerAs: 'vm'
         })
+        .when('/article/update/:articleid', { 
+            templateUrl: '/article/create.view.html',
+            controller: 'articleUpdateCtrl',
+            controllerAs: 'vm'
+        })
         .when('/register', {
             templateUrl: '/user/register.view.html', 
             controller: 'registerCtrl',

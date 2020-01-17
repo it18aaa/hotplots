@@ -12,6 +12,12 @@
             return $http.get('/api/article/list/sort/' + sortOrder.trim());
         }
 
+        var update = function (articleid, data) {
+            var url = '/api/article/update/' + articleid;
+
+            return $http.put(url, data);
+        }
+
         var read = function (id) {
             if (id === undefined) {
                 // do error
@@ -22,10 +28,10 @@
 
         var create = function (article) {
             var url = '/api/article/create';
-            return $http.post(url, article);     
+            return $http.post(url, article);
         }
 
-        var comment = function(articleid, userid, name, comment) {
+        var comment = function (articleid, userid, name, comment) {
 
             var url = '/api/article/' + articleid + '/comment';
             var data = {
@@ -38,7 +44,7 @@
             return $http.post(url, data);
         }
 
-        var like = function(articleid, userid) {
+        var like = function (articleid, userid) {
             var url = '/api/article/like';
             var data = {
                 articleid: articleid,
@@ -52,7 +58,8 @@
             read: read,
             create: create,
             comment: comment,
-            like: like
+            like: like,
+            update: update
         };
     }
 })();
