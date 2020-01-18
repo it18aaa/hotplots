@@ -26,7 +26,7 @@
         //
         articles.getList('newest')
             .then((res) => {
-                    vm.articlesNewest = res.data.slice(0, 3);
+                    vm.articlesNewest = res.data;
                 },
                 (e) => {
                     console.log(e);
@@ -38,7 +38,7 @@
         //
         articles.getList('popular')
             .then((res) => {
-                    vm.articlesPopular = res.data.slice(0, 3);
+                    vm.articlesPopular = res.data;
                 },
                 (e) => {
                     console.log(e)
@@ -47,7 +47,7 @@
 
         articles.getList('active')
             .then((res) => {
-                    vm.articlesActive = res.data.slice(0, 3);
+                    vm.articlesActive = res.data;
                 },
                 (e) => {
                     console.log(e)

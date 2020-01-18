@@ -93,17 +93,17 @@ module.exports.articleList = (req, res) => {
             break;
         case 'active':
             sortOrder = {
-                likes: -1
+                comment_count: -1
             };
             break;
         case 'popular':
             sortOrder = {
-                comment_count: -1
+                likes: -1
             };
     }
 
     console.log(sortOrder);
-    
+
     var query = Article.find(searchCriteria)
         .select(fields)
         .sort(sortOrder)

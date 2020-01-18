@@ -19,7 +19,7 @@ router.get('/article/list/tag/:tagid/sort/:order', ctrlTag.getTaggedArticles);
 
 router.get('/article/list/author/:author/', ctrlArticle.articleList);
 router.get('/article/list/sort/:sortorder/', ctrlArticle.articleList);
-router.get('/article/list', ctrlArticle.articleList);
+//router.get('/article/list', ctrlArticle.articleList);
 
 // some basic article api functions
 router.get('/articles/read/:articleid', ctrlArticle.fetchById);
