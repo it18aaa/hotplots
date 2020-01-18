@@ -33,3 +33,11 @@ a {
     column-count: 5;
   }
 }
+
+.center-cropped {
+   /* width: 120px;*/
+    height: 120px;
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+  }

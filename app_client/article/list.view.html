@@ -1,8 +1,27 @@
-<h1 class="display-4">{{ vm.title }}</h1>
-<h3>{{ vm.subtitle }}</h3>
+<div class="row">
 
-<div ng-repeat="a in vm.articles" class="row">
-    <div class="col-md-5">
-        <div article-list-card article="a"></div>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+        <h1 class="display-4">{{ vm.title }}</h1>
+        <h3>{{ vm.subtitle }}</h3>
+
+        <div class="lead">{{ vm.articles.length}} articles</div>
+
+
+        <div class="row">
+
+            <div class="col">
+                <span class="btn btn-sm border" ng-click="vm.order('newest')">Newest</span>
+                <span class="btn btn-sm border" ng-click="vm.order('oldest')">Oldest</span>
+                <span class="btn btn-sm border" ng-click="vm.order('active')">Most Active</span>
+                <span class="btn btn-sm border" ng-click="vm.order('popular')">Most Popular</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div ng-repeat="a in vm.articles" class="col-md-3 p-2" article-list-card article="a"></div>
+        </div>
     </div>
 </div>

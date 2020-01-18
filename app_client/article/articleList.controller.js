@@ -7,14 +7,24 @@
         var vm = this;
         vm.title = "Articles";
         vm.userid = user.getInfo();
+        sortorder = 'newest';
 
-        articles.getList($routeParams.sort)
-            .then(
-                (result) => {
-                    vm.articles = result.data;
-                },
-                (error) => {
-                    console.log(error);
-                });
+        refreshList();
+
+        vm.order = function (input) {
+            sortorder = input;
+            refreshList();
+        };
+
+        function refreshList() {
+            articles.getList(sortorder)
+                .then(
+                    (result) => {
+                        vm.articles = result.data;
+                    },
+                    (error) => {
+                        console.log(error);
+                    });
+        }
     }
 })();

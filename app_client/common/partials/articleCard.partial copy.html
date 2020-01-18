@@ -1,0 +1,25 @@
+<div class="row p-2">
+    <div class="col-md-12 center-cropped mb-2" style="background-image: url('/img/{{ article.picture }}');">
+    </div>
+    <div class="col-md-12 p-0">
+        <a href="/article/read/{{ article._id }}">
+            {{article.title}}
+        </a>
+    </div>
+
+    <div class="border-bottom mb-2 pb-2">
+        <small>{{ article.synopsis }}</small>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <small>{{ article.date | date:'dd/MM/yyyy'}} - {{ article.author }}</small>
+        </div>
+    </div>
+    <div class="col-md-6 p-0">
+        <img src='/img/like.png' alt='like'> {{ article.likes }}&nbsp;&nbsp;<img src='/img/comment.png' alt='comments'> {{ article.comment_count }}
+    </div>
+</div>
+<div>
+
+</div>

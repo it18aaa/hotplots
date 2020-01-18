@@ -58,31 +58,51 @@ module.exports.articleList = (req, res) => {
     // set defaults     
     //   
     var searchCriteria = undefined;
-    var fields = "_id title likes comment_count author body date picture";
+    var fields = "_id title likes comment_count author body date picture synopsis modified";
     var sortOrder = "-date";
     var limit = 100;
     var summarySize = 150;
 
     // search criteria based on input
-    //
-    if (req.params.tagfilter) {
-        var tag = req.params.tagfilter;
-        searchCriteria = {
-            'tags': tag
-        };
+    // // not in use?
 
 
+    // if (req.params.tagfilter) {
+    //     var tag = req.params.tagfilter;
+    //     searchCriteria = {
+    //         'tags': tag
+    //     };
+    // } else if (req.params.author) {
+    //     var author = req.params.author;
+    //     searchCriteria = {
+    //         'author': author
+    //     };
+    // };
 
-    } else if (req.params.author) {
-        var author = req.params.author;
-        searchCriteria = {
-            'author': author
-        };
-    };
-
-    if (req.params.sortorder) {
-        sortOrder = req.params.sortorder;
+    switch (req.params.sortorder) {
+        case 'newest':
+        case undefined:
+            sortOrder = {
+                date: -1
+            };
+            break;
+        case 'oldest':
+            sortOrder = {
+                date: 1
+            };
+            break;
+        case 'active':
+            sortOrder = {
+                comment_count: -1
+            };
+            break;
+        case 'popular':
+            sortOrder = {
+                likes: -1
+            };
     }
+
+    console.log(sortOrder);
 
     var query = Article.find(searchCriteria)
         .select(fields)

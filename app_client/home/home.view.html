@@ -1,37 +1,68 @@
-<div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{ vm.title }}</h1>
-            <p>Online Gardening Community
-            </p>
+<div class="row ">
+    <div class="col-md-12 pt-2">
+        <div class="row">
+            <div class="col-md-11">
+                <h1 class="display-4">{{ vm.title }}</h1>
+            </div>
+            <div class="col-md-1 align-bottom">
+            </div>
         </div>
     </div>
-    <div class="row p-2">
-        <div class="cold-md-8 border p-2">
-            <div class="row border-bottom">
-                <div class="col-12">
-                    <h4 class="border-bottom">Latest Articles</h4>
-                    <div class="row p-2">
-                        <div ng-repeat="a in vm.articlesByDate" class="col-md-4 border-right">
-                            <div article-card article="a"></div>
-                        </div>
+</div>
+<div class="row">
+    <div class="col-md-3 p-4">
+
+        <div class="row">
+            <div class="col-md-12">
+                <span class=""><span class="lead border-bottom"><strong>The</strong> Online Gardening
+                        Community</span><br />
+                    <span class="font-italic">for beginners and experts to share...</span></p>
+            </div>
+        </div>
+
+        <div class="col-md-12 center-cropped mb-2 h-25" style="background-image: url('/img/hotplots.jpg');">
+        </div>
+        
+        <h6>Popular tags</h6>
+        <span class="m-1 btn btn-sm btn border border-info" ng-repeat="tag in vm.popularTags | limitTo: 15">
+            <a href='/article/tag/{{ tag._id }}'>{{ tag.name }}&nbsp;({{ tag.article_count }})
+            </a>
+        </span>
+    </div>
+
+    <div class="col-md-9 p-4">
+
+        <div class="row ">
+            <div class="col-12">
+                <h6 class="">Latest Articles</h6>
+                <div class="row bg-light">
+                    <div ng-repeat="a in vm.articlesNewest | limitTo: 3" class="col-md-4">
+                        <div article-card article="a"></div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row border-bottom">
-                <div class="col-12">
-                    <h4 class="border-bottom">Most popular</h4>
-                    <div class="row p-2">
-                        <div ng-repeat="a in vm.articlesByLikes" class="col-md-4 border-right">
-                            <div article-card article="a"></div>
-                        </div>
+        <div class="row ">
+            <div class="col-12">
+                <h6 class="">Popular articles</h6>
+                <div class="row bg-light p-2">
+                    <div ng-repeat="a in vm.articlesPopular | limitTo: 3" class="col-md-4">
+                        <div article-card article="a"></div>
                     </div>
                 </div>
             </div>
-
         </div>
+        <div class="row">
+            <div class="col-12">
+                <h6 class="border-bottom">Most Active articles</h6>
+                <div class="row p-2 bg-light">
+                    <div ng-repeat="a in vm.articlesActive | limitTo: 3" class="col-md-4">
+                        <div article-card article="a"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-
 </div>
