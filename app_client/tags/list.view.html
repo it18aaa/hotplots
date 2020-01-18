@@ -16,8 +16,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-3 p-1 border" ng-repeat="tag in vm.tags">
+       <div class="row">
+            <div class="col-md-2 p-2 border m-1" ng-repeat="tag in vm.tags">
                 <div>
                     <a href="/article/tag/{{tag._id}}">{{ tag.name }} ({{tag.article_count}})</a>
                 </div>
