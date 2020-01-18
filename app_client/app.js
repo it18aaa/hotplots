@@ -32,6 +32,11 @@ function config($routeProvider, $locationProvider) {
             controller: 'articleUpdateCtrl',
             controllerAs: 'vm'
         })
+        .when('/tag/list', {
+            templateUrl: '/tags/list.view.html',
+            controller: 'tagListCtrl',
+            controllerAs: 'vm'
+        })
         .when('/register', {
             templateUrl: '/user/register.view.html', 
             controller: 'registerCtrl',
