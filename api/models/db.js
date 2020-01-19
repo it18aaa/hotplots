@@ -16,8 +16,10 @@ if (process.platform === "win32") {
         process.emit("SIGUSR2");
     })
 }
+// mongo config is now done in /.env
+//var dbURI = 'mongodb://localhost/hotplots';
+var dbURI = process.env.MONGO_SERVER;
 
-var dbURI = 'mongodb://localhost/hotplots';
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
