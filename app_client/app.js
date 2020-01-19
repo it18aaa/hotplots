@@ -42,6 +42,9 @@ function config($routeProvider, $locationProvider) {
             controller: 'registerCtrl',
             controllerAs: 'vm'
         })
+        .when('/policy', {
+            templateUrl: '/static/policy.html'
+        })
         .when('/login', {
             templateUrl: '/user/login.view.html',
             controller: 'loginCtrl',
@@ -55,7 +58,7 @@ function config($routeProvider, $locationProvider) {
         .otherwise({
             redirectTo: '/'
         });
-        //$locationProvider.hashPrefix('');
+       
         $locationProvider.html5Mode(true);
 }
 
