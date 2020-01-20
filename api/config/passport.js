@@ -5,7 +5,7 @@ var User = mongoose.model('User');
 
 // configure a local strategy
 
-// pretty much lifted from Getting MEAN by Simon Holmes
+// from Getting MEAN by Simon Holmes
 passport.use(new LocalStrategy({
         usernameField: 'email'
     },
@@ -15,7 +15,8 @@ passport.use(new LocalStrategy({
             email: username
         }, function (err, user) {
             // there was an error
-            if (err) {
+            
+            if (err) {                
                 return done(err);
             }
             // no user found

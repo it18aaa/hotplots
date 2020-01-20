@@ -2,26 +2,20 @@ var mongoose = require('mongoose');
 var Article = mongoose.model('Article');
 var User = mongoose.model('User');
 
-// utility function, send content and response in one line
-var sendJsonResponse = (res, status, content) => {
-    res.status(status);
-    res.json(content);
-}
-
 module.exports.fetchById = (req, res) => {
     Article.findById(req.params.articleid)
         .exec((err, article) => {
             if (!article) {
-                console.log(`fetchById Err Record not found`);
-                sendJsonResponse(res, 404, {
-                    "message": "Article not found!"
-                });
+                res.status(404)
+                    .json({ "message": "Article not found!" });
                 return;
             } else if (err) {
-                sendJsonResponse(res, 404, err);
+
+                res.status(404)
+                    .json(err);
                 return;
             }
-            sendJsonResponse(res, 200, article);
+            res.status(200).json(article);
         });
 }
 
@@ -40,14 +34,16 @@ module.exports.update = (req, res) => {
             return existing.save();
         })
         .then(success => {
-            sendJsonResponse(res, 200, {
-                "message": "article modified"
-            });
+            res.status(200)
+                .json({
+                    "message": "article modified"
+                });
         })
         .catch(error => {
-            sendJsonResponse(res, 400, {
-                "message": "unable to update"
-            });
+            res.status(400)
+                .json({
+                    "message": "unable to update"
+                })
         })
 
 }
@@ -61,22 +57,6 @@ module.exports.articleList = (req, res) => {
     var sortOrder = "-date";
     var limit = 100;
     var summarySize = 150;
-
-    // search criteria based on input
-    // // not in use?
-
-
-    // if (req.params.tagfilter) {
-    //     var tag = req.params.tagfilter;
-    //     searchCriteria = {
-    //         'tags': tag
-    //     };
-    // } else if (req.params.author) {
-    //     var author = req.params.author;
-    //     searchCriteria = {
-    //         'author': author
-    //     };
-    // };
 
     switch (req.params.sortorder) {
         case 'newest':
@@ -101,20 +81,16 @@ module.exports.articleList = (req, res) => {
             };
     }
 
-    console.log(sortOrder);
-
     var query = Article.find(searchCriteria)
         .select(fields)
         .sort(sortOrder)
         .limit(limit);
 
     query.exec((err, docs) => {
-
         docs.forEach((item, index) => {
             item.body = item.body.slice(0, summarySize);
         });
-
-        sendJsonResponse(res, 200, docs);
+        res.status(200).json(docs);
     })
 }
 
@@ -167,27 +143,32 @@ module.exports.articleLike = (req, res) => {
                 }
             })
             .then(success => {
-                return Article.findById(articleid).exec();
+                return Article
+                    .findById(articleid)
+                    .exec();
             })
             .then(article => {
                 article.likes++;
                 return article.save();
             })
             .then(success => {
-                sendJsonResponse(res, 201, {
-                    "message": "like added to user page;"
-                });
+                res.status(201)
+                    .json({
+                        "message": "like added to user page;"
+                    })
             })
             .catch(error => {
-                sendJsonResponse(res, 400, {
+                res.status(400).json({
                     "message": error
                 });
                 console.log(error);
             })
     } else {
-        sendJsonResponse(res, 400, {
-            "message": "require both article id and user id"
-        });
+        res.status(400)
+            .json({
+                "message": "require both article id and user id"
+            })
+
     };
 }
 
@@ -209,7 +190,8 @@ module.exports.articleComment = (req, res) => {
             likes: 0,
         };
 
-        // we want to push the comment onto the array
+        // we want to both push the comment onto the array
+        // and increment counter, atomically
         update = {
             $push: {
                 comments: comment
@@ -227,19 +209,20 @@ module.exports.articleComment = (req, res) => {
         Article.findOneAndUpdate(filter, update, options,
             (error, doc) => {
                 if (!error) {
-                    //console.log(doc);
-                    sendJsonResponse(res, 200, {
+                    res.status(200).json({
                         "message": "comment inserted"
-                    });
+                    })
                 } else {
-                    sendJsonResponse(res, 400, error);
+                    res.status(400)
+                        .json(error)
                 }
             }
         );
     } else {
-        sendJsonResponse(res, 400, {
-            "message": "article not found or comment too short"
-        });
+        res.status(400)
+            .json({
+                "message": "article not found or comment too short"
+            })
     }
 
 };
