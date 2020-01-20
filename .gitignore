@@ -55,7 +55,9 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+# I've disabled this so I could include mongo config 
+# in the .env file
+#.env
 
 # next.js build output
 .next

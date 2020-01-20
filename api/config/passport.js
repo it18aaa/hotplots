@@ -5,6 +5,7 @@ var User = mongoose.model('User');
 
 // configure a local strategy
 
+// pretty much lifted from Getting MEAN by Simon Holmes
 passport.use(new LocalStrategy({
         usernameField: 'email'
     },
