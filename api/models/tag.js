@@ -25,7 +25,7 @@ tagSchema.statics.untagArticle = async function (name, articleid) {
     await query.exec()
         .then(existing => {
             console.log(existing);
-            if(existing.articles.includes(articleid)) {
+            if (existing.articles.includes(articleid)) {
                 var i = existing.articles.indexOf(articleid);
                 existing.articles.splice(i, 1)
                 existing.article_count--;
